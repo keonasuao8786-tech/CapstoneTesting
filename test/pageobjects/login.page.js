@@ -1,5 +1,5 @@
 import { $ } from '@wdio/globals'
-import Page from './MyTasks.js';
+import Page from './CaseWork.js';
 
 
 class LoginPage extends Page {
