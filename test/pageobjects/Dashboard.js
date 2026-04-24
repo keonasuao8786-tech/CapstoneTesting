@@ -2,8 +2,8 @@ import { $ } from '@wdio/globals'
 import Page from './CaseWork.js';
 
 class SecurePage extends Page {
-    get flashAlert () {
-        return $('#flash');
+    get primaryText () {
+        return $('[class*="fui-Persona__primaryText"]');
     }
 }
 
