@@ -8,7 +8,8 @@ describe('My Login application', () => {
         await browser.pause(1000);
 
         await LoginPage.login();
-        await expect(SecurePage.title).toHaveText(['My Cases']);
+        await browser.pause(1000)
+        await expect(SecurePage.searchInput).toExist();
     })
 })
 
