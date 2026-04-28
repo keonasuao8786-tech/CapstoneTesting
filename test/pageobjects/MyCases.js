@@ -3,7 +3,7 @@ import Page from './CaseWork.js';
 
 class MyCases extends Page {
     get caseType () {
-        return $('[class*="___1g9gf5i"]');
+        return $('[role="columnheader"]>[class*="___1g9gf5i"]');
     }
     get searchInput () {
         return $('[class*="fui-Input__input"]');
