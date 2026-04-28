@@ -11,5 +11,15 @@ describe('Dashboard Testing', () => {
         await LoginPage.login();
         await browser.pause(1000)
         await expect(MyCases.searchInput).toExist();
+
+        await MyCases.nameColumn.click();
+        await expect(MyCases.columnOrderAsc).toExist();
+        await MyCases.nameColumn.click();
+        await expect(MyCases.columnOrderDesc).toExist();
+
+        await MyCases.retainedBy.click();
+        await expect(MyCases.columnOrderAsc).toExist();
+        await MyCases.retainedBy.click();
+        await expect(MyCases.columnOrderDesc).toExist();
     })
 })

@@ -8,5 +8,20 @@ class MyCases extends Page {
     get searchInput () {
         return $('[class*="fui-Input__input"]');
     }
+    get nameColumn () {
+        return $('//span[@class="fui-TableCellLayout__main"][contains(text(),"Name")]');
+    }
+    get retainedBy () {
+        return $('//span[@class="fui-TableCellLayout__main"][contains(text(),"Retained By")]');
+    }
+    get statusColumn () {
+        return $('//span[@class="fui-TableCellLayout__main"][contains(text(),"Status")]');
+    }
+    get columnOrderAsc () {
+        return $('[aria-sort ="ascending"]');
+    }
+    get columnOrderDesc () {
+        return $('[aria-sort ="descending"]')
+    }
 }
 export default new MyCases();
