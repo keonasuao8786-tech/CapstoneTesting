@@ -23,5 +23,11 @@ class MyCases extends Page {
     get columnOrderDesc () {
         return $('[aria-sort ="descending"]')
     }
+    get caseColumnType () {
+        return $('[role="presentation"]>[class*="fui-TableCellLayout"]');
+    }
+    get button () {
+        return $('role="button"');
+    }
 }
 export default new MyCases();
