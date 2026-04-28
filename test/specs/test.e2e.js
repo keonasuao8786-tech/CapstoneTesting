@@ -21,5 +21,12 @@ describe('Dashboard Testing', () => {
         await expect(MyCases.columnOrderAsc).toExist();
         await MyCases.retainedBy.click();
         await expect(MyCases.columnOrderDesc).toExist();
+
+        await MyCases.statusColumn.click();
+        await expect(MyCases.columnOrderAsc).toExist();
+        await MyCases.statusColumn.click();
+        await expect(MyCases.columnOrderDesc).toExist();
+
+        await MyCases.caseType.click();
     })
 })
