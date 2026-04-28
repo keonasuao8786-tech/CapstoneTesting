@@ -26,8 +26,5 @@ class MyCases extends Page {
     get caseColumnType () {
         return $('[role="presentation"]>[class*="fui-TableCellLayout"]');
     }
-    get button () {
-        return $('role="button"');
-    }
 }
 export default new MyCases();

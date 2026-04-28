@@ -3,7 +3,7 @@ import LoginPage from '../pageobjects/login.js'
 import SecurePage from '../pageobjects/Dashboard.js'
 import MyCases from '../pageobjects/MyCases.js'
 
-describe('Dashboard Testing', () => {
+describe('My Cases Table Testing', () => {
     it('should should test the columns in the My Cases Table to make sure they sort the table correctly', async () => {
         await LoginPage.open();
         await expect(LoginPage.inputUsername).toExist();
@@ -33,5 +33,14 @@ describe('Dashboard Testing', () => {
         await expect(MyCases.caseType).toBeDisplayed();
         // checking if the Case Type column doesn't contain the "button" role
         await expect(MyCases.caseType).not.toHaveAttr('role', 'button')
+    })
+    it('should navigate using the cases in the table correctly', async () => {
+        await LoginPage.open();
+        await expect(LoginPage.inputUsername).toExist();
+
+        await LoginPage.login();
+        await browser.pause(1000)
+        await expect(MyCases.searchInput).toExist();
+
     })
 })
