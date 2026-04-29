@@ -1,4 +1,4 @@
-import { expect } from '@wdio/globals'
+import { browser, expect } from '@wdio/globals'
 import LoginPage from '../pageobjects/login.js'
 import SecurePage from '../pageobjects/Dashboard.js'
 import MyCases from '../pageobjects/MyCases.js'
@@ -35,9 +35,6 @@ describe('My Cases Table Testing', () => {
         await expect(MyCases.caseType).not.toHaveAttr('role', 'button')
     })
     it('should navigate using the cases in the table correctly', async () => {
-        await browser.pause(1000);
-        await expect(MyCases.searchInput).toExist();
-
         await MyCases.case1.click();
         await expect(MyCases.case1Page).toExist();
 
@@ -53,6 +50,17 @@ describe('My Cases Table Testing', () => {
         await expect(MyCases.case1Page).not.toBeDisplayed();
 
         await MyCases.blankCell1.doubleClick();
-        await expect(MyCases.case1Page).toBeDisplayed();   //For now I'm only going to test one case but if I have time at the end I'll add more     
+        await expect(MyCases.case1Page).toBeDisplayed();   //For now I'm only going to test one case but if I have time at the end I'll add more
+        await browser.back();
+        await MyCases.nameColumn.click();
+        await MyCases.client1Cell.doubleClick();
+        await expect(MyCases.case1Page).toBeDisplayed();
+        await browser.back();
+        await MyCases.nameColumn.click();
+        await MyCases.status1Cell.doubleClick();
+        await expect(MyCases.case1Page).toBeDisplayed();
+    })
+    it('should confirm the cases have an icon containing initials and a value in the Status column', async () => {
+        
     })
 })
