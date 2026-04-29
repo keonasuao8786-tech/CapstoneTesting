@@ -26,5 +26,11 @@ class MyCases extends Page {
     get caseColumnType () {
         return $('[role="presentation"]>[class*="fui-TableCellLayout"]');
     }
+    get case1 () {
+        return $('//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"Capstone Test Case")]')
+    }
+    get case1Page () {
+        return $('//span[@class="fui-Text ___dlwtst0 fk6fouc fod5ikn faaz57k figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"dad what are you doing here")]')
+    }
 }
 export default new MyCases();

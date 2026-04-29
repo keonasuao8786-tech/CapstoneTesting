@@ -30,17 +30,22 @@ describe('My Cases Table Testing', () => {
         await MyCases.statusColumn.click();
         await expect(MyCases.columnOrderDesc).toExist();
 
+        await MyCases.nameColumn.click();
+
         await expect(MyCases.caseType).toBeDisplayed();
         // checking if the Case Type column doesn't contain the "button" role
         await expect(MyCases.caseType).not.toHaveAttr('role', 'button')
     })
     it('should navigate using the cases in the table correctly', async () => {
-        await LoginPage.open();
-        await expect(LoginPage.inputUsername).toExist();
-
-        await LoginPage.login();
-        await browser.pause(1000)
+        await browser.pause(1000);
         await expect(MyCases.searchInput).toExist();
+
+        await MyCases.case1.click();
+        await expect(MyCases.case1Page).toExist();
+        await console.log('The case page has been successfully opened')
+
+        await browser.back();
+        await expect(MyCases.searchInput).toBeDisplayed();
 
     })
 })
