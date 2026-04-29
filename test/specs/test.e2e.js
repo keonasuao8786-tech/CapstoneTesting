@@ -42,10 +42,12 @@ describe('My Cases Table Testing', () => {
 
         await MyCases.case1.click();
         await expect(MyCases.case1Page).toExist();
-        await console.log('The case page has been successfully opened')
 
         await browser.back();
         await expect(MyCases.searchInput).toBeDisplayed();
+
+        await MyCases.case2.click();
+        await expect(MyCases.case2Page).toExist();
 
     })
 })
