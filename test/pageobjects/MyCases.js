@@ -47,5 +47,8 @@ class MyCases extends Page {
     get status1Cell () {
         return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(4)');
     }
+    get case1Status () {
+        return $('[class*="fui-DataGridRow"]:nth-of-type(1)>[class*="fui-DataGridCell"]:nth-of-type(4) [class*="fui-Text"]')
+    }
 }
 export default new MyCases();
