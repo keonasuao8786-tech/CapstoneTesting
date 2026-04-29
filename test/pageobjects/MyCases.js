@@ -36,7 +36,16 @@ class MyCases extends Page {
         return $('//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"Cat and the Mouse")]');
     }
     get case2Page () {
-        return $('[value="Cat and the Mouse"]')
+        return $('[value="Cat and the Mouse"]');
+    }
+    get blankCell1 () {
+        return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(2)');
+    }
+    get client1Cell () {
+        return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(3)');
+    }
+    get status1Cell () {
+        return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(4)');
     }
 }
 export default new MyCases();

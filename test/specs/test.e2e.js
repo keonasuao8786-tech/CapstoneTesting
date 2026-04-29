@@ -30,8 +30,6 @@ describe('My Cases Table Testing', () => {
         await MyCases.statusColumn.click();
         await expect(MyCases.columnOrderDesc).toExist();
 
-        await MyCases.nameColumn.click();
-
         await expect(MyCases.caseType).toBeDisplayed();
         // checking if the Case Type column doesn't contain the "button" role
         await expect(MyCases.caseType).not.toHaveAttr('role', 'button')
@@ -45,9 +43,16 @@ describe('My Cases Table Testing', () => {
 
         await browser.back();
         await expect(MyCases.searchInput).toBeDisplayed();
+        await MyCases.nameColumn.click();
 
-        await MyCases.case2.click();
-        await expect(MyCases.case2Page).toExist();
+        await MyCases.blankCell1.click();
+        await expect(MyCases.case1Page).not.toBeDisplayed();
+        await MyCases.client1Cell.click();
+        await expect(MyCases.case1Page).not.toBeDisplayed();
+        await MyCases.status1Cell.click();
+        await expect(MyCases.case1Page).not.toBeDisplayed();
 
+        await MyCases.blankCell1.doubleClick();
+        await expect(MyCases.case1Page).toBeDisplayed();   //For now I'm only going to test one case but if I have time at the end I'll add more     
     })
 })
