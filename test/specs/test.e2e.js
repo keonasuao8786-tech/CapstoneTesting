@@ -74,6 +74,10 @@ describe('My Cases Table Testing', () => {
         await expect(MyCases.clientIcon).toHaveText("D")
         // Confirming the case I am currently testing doesn't have a status assigned to it
         await expect(MyCases.case1Status).toHaveText("new")
+        // Checking to see what case type is assigned to the case
         await expect(MyCases.blankText).toHaveText("")
+    })
+    it('should test the search bar to confirm it is working properly', async () => {
+        
     })
 })
