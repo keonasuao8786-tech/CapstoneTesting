@@ -69,7 +69,7 @@ describe('My Cases Table Testing', () => {
         await browser.back();
         await MyCases.nameColumn.doubleClick();
     })
-    it('should confirm the cases have an icon containing initials and a value in the Status column', async () => {
+    it('should confirm the cases have an icon containing initials and a value in the Status column, and that the case type column has one of the case types in it or not', async () => {
         // Confirming the client has an icon with the initials of their name
         await expect(MyCases.clientIcon).toHaveText("D")
         // Confirming the case I am currently testing doesn't have a status assigned to it
