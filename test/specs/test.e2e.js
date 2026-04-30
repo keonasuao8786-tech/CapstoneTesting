@@ -10,7 +10,7 @@ describe('My Cases Table Testing', () => {
 
         await LoginPage.login();
         // This pause is there to make sure the assertion doesn't fail before the page is fully loaded
-        await browser.pause(1000)
+        // await browser.pause(1000)
         await expect(MyCases.searchInput).toExist();
 
         await MyCases.nameColumn.click();
@@ -30,6 +30,8 @@ describe('My Cases Table Testing', () => {
         await MyCases.statusColumn.click();
         await expect(MyCases.columnOrderDesc).toExist();
 
+        await MyCases.nameColumn.doubleClick();
+
         await expect(MyCases.caseType).toBeDisplayed();
         // Checking if the Case Type column doesn't contain the "button" role
         await expect(MyCases.caseType).not.toHaveAttr('role', 'button')
@@ -42,12 +44,12 @@ describe('My Cases Table Testing', () => {
         await browser.back();
         await expect(MyCases.searchInput).toBeDisplayed();
         // Sorting the column again so I don't have to change my selector after every back(granted this will break if somebody makes a case starting with A, B, or Can but I'll cross that bridge when I get to it)
-        await MyCases.nameColumn.click();
+        await MyCases.nameColumn.doubleClick();
 
         await MyCases.blankCell1.click();
         await expect(MyCases.case1Page).not.toBeDisplayed();
         // Confirming clicking anywhere except the name column regularly won't take us to the case page
-        await MyCases.client1Cell.click();
+        await MyCases.clientCell.click();
         await expect(MyCases.case1Page).not.toBeDisplayed();
         await MyCases.status1Cell.click();
         await expect(MyCases.case1Page).not.toBeDisplayed();
@@ -56,19 +58,21 @@ describe('My Cases Table Testing', () => {
         await expect(MyCases.case1Page).toBeDisplayed();   //For now I'm only going to test one case but if I have time at the end I'll add more
         // Confirming that a double click anywhere in the row will take you to the case page
         await browser.back();
-        await MyCases.nameColumn.click();
+        await MyCases.nameColumn.doubleClick();
         await MyCases.client1Cell.doubleClick();
         await expect(MyCases.case1Page).toBeDisplayed();
         await browser.back();
-        await MyCases.nameColumn.click();
+        await MyCases.nameColumn.doubleClick();
         await MyCases.status1Cell.doubleClick();
         await expect(MyCases.case1Page).toBeDisplayed();
 
         await browser.back();
-        await MyCases.nameColumn.click();
+        await MyCases.nameColumn.doubleClick();
     })
     it('should confirm the cases have an icon containing initials and a value in the Status column', async () => {
+        // Confirming the client has an icon with the initials of their name
+        await expect(MyCases.clientIcon).toHaveText("D")
         // Confirming the case I am currently testing doesn't have a status assigned to it
-        await expect(MyCases.case1Status).not.toHaveText()
+        await expect(MyCases.case1Status).toHaveText("new")
     })
 })
