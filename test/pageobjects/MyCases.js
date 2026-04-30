@@ -35,6 +35,9 @@ class MyCases extends Page {
     get blankCell1 () {
         return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(2)');
     }
+    get blankText () {
+        return $(`[class*="fui-DataGridRow"]:first-of-type>[class*="fui-DataGridCell"]>[class="fui-TableCellLayout ___1mzifb9 f22iagw f122n59 faqewft f1izfyrr f1aehjj5 f1xqy1su f1a3p1vp f1cmbuwj fz5stix"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Text"]`)
+    }
     get clientCell () {
         return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(3)');
     }
