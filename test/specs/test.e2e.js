@@ -87,5 +87,11 @@ describe('My Cases Table Testing', () => {
 
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveText();
+        await SearchBar.searchUsingClientName();
+        await expect(MyCases.case1).toBeDisplayed();
+        await expect(MyCases.case2).toBeDisplayed();
+
+        await SearchBar.searchClear();
+        await expect(SearchBar.searchInput).not.toHaveText();
     })
 })

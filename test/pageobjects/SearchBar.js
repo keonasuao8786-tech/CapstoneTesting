@@ -17,6 +17,10 @@ class SearchBar extends Page {
         const text = await MyCases.case2.getText();
         await this.searchInput.setValue(text);
     }
+    async searchUsingClientName() {
+        const text = await MyCases.clientName.getText();
+        await this.searchInput.setValue(text);
+    }
     async searchClear () {
         await this.clearButton.click();
     }

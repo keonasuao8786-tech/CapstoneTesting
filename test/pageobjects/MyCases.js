@@ -38,6 +38,9 @@ class MyCases extends Page {
     get blankText () {
         return $(`[class*="fui-DataGridRow"]:first-of-type>[class*="fui-DataGridCell"]>[class="fui-TableCellLayout ___1mzifb9 f22iagw f122n59 faqewft f1izfyrr f1aehjj5 f1xqy1su f1a3p1vp f1cmbuwj fz5stix"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Text"]`)
     }
+    get clientName () {
+        return $(`[class*="fui-DataGridRow"]:nth-of-type(1)>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class="fui-Persona rlroi9i ___1gusw2c f1iantul"]>[class*="fui-Persona__primaryText"]>[class*="fui-Text"]`);
+    }
     get clientCell () {
         return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(3)');
     }
