@@ -76,9 +76,16 @@ describe('My Cases Table Testing', () => {
         // Checking to see what case type is assigned to the case
         await expect(MyCases.blankText).toHaveText("big zesty shrek")
     })
-    it('should test the search bar to confirm it is working properly', async () => {
+    it('should test the search bar to confirm it is working properly, P/N Testing', async () => {
         await expect(MyCases.searchInput).toBeDisplayed();
         await SearchBar.searchUsingExistingCase();
         await expect(MyCases.case2).not.toBeDisplayed();
+        await SearchBar.searchClear();
+        await expect(MyCases.searchInput).not.toHaveText();
+        await SearchBar.searchUsingAnotherCase();
+        await expect(MyCases.case1).not.toBeDisplayed();
+        
+        await SearchBar.searchClear();
+        await expect(MyCases.searchInput).not.toHaveText();
     })
 })
