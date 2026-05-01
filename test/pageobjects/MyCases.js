@@ -29,6 +29,9 @@ class MyCases extends Page {
     get case1 () {
         return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")]`);
     }
+    get case2 () {
+        return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"Z no touchy please Don't delete")]`)
+    }
     get case1Page () {
         return $(`[class*="fui-Title2"]`);
     }
