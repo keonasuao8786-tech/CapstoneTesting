@@ -68,7 +68,7 @@ describe('My Cases Table Testing', () => {
         await browser.back();
         await MyCases.nameColumn.doubleClick();
     })
-    it('should confirm the cases have an icon containing initials and a value in the Status column, and if the case type column has one of the case types in it or not', async () => {
+    it('should verify cases display user initials, a status value, and the correct case type association', async () => {
         // Confirming the client has an icon with the initials of their name
         await expect(MyCases.clientIcon).toHaveText("D")
         // Confirming the case I am currently testing doesn't have a status assigned to it
@@ -80,8 +80,10 @@ describe('My Cases Table Testing', () => {
         await expect(SearchBar.searchInput).toBeDisplayed();
         await SearchBar.searchUsingExistingCase();
         await expect(MyCases.case2).not.toBeDisplayed();
+
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveText();
+
         await SearchBar.searchUsingAnotherCase();
         await expect(MyCases.case1).not.toBeDisplayed();
 
@@ -95,6 +97,12 @@ describe('My Cases Table Testing', () => {
         await expect(SearchBar.searchInput).not.toHaveText();
 
         await SearchBar.negativeSearchClient();
+        await expect(MyCases.case1).not.toBeDisplayed();
+
+        await SearchBar.searchClear();
+        await expect(SearchBar.searchInput).not.toHaveText();
+
+        await SearchBar.negativeSearchStatus();
         await expect(MyCases.case1).not.toBeDisplayed();
     })
 })

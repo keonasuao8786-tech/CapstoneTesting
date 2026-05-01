@@ -29,6 +29,10 @@ class SearchBar extends Page {
         const text = await MyCases.caseTypeValue.getText();
         await this.searchInput.setValue(text);
     }
+    async negativeSearchStatus () {
+        const text = await MyCases.statusValue.getText();
+        await this.searchInput.setValue(text);
+    }
 }
 
 export default new SearchBar();
