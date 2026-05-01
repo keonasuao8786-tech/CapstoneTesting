@@ -9,8 +9,6 @@ describe('My Cases Table Testing', () => {
         await expect(LoginPage.inputUsername).toExist();
 
         await LoginPage.login();
-        // This pause is there to make sure the assertion doesn't fail before the page is fully loaded
-        // await browser.pause(1000)
         await expect(MyCases.searchInput).toExist();
 
         await MyCases.nameColumn.click();
@@ -39,7 +37,7 @@ describe('My Cases Table Testing', () => {
     it('should navigate using the cases in the table correctly', async () => {
         await MyCases.case1.click();
         // Selecting the name of the case to make sure it takes us to the corresponding case page
-        await expect(MyCases.case1Page).toExist();
+        await MyCases.pageCheck();
 
         await browser.back();
         await expect(MyCases.searchInput).toBeDisplayed();
@@ -55,16 +53,16 @@ describe('My Cases Table Testing', () => {
         await expect(MyCases.case1Page).not.toBeDisplayed();
 
         await MyCases.blankCell1.doubleClick();
-        await expect(MyCases.case1Page).toBeDisplayed();   //For now I'm only going to test one case but if I have time at the end I'll add more
+        await MyCases.pageCheck();   //For now I'm only going to test one case but if I have time at the end I'll add more
         // Confirming that a double click anywhere in the row will take you to the case page
         await browser.back();
         await MyCases.nameColumn.doubleClick();
         await MyCases.client1Cell.doubleClick();
-        await expect(MyCases.case1Page).toBeDisplayed();
+        await MyCases.pageCheck();
         await browser.back();
         await MyCases.nameColumn.doubleClick();
         await MyCases.status1Cell.doubleClick();
-        await expect(MyCases.case1Page).toBeDisplayed();
+        await MyCases.pageCheck();
 
         await browser.back();
         await MyCases.nameColumn.doubleClick();
@@ -75,9 +73,9 @@ describe('My Cases Table Testing', () => {
         // Confirming the case I am currently testing doesn't have a status assigned to it
         await expect(MyCases.case1Status).toHaveText("new")
         // Checking to see what case type is assigned to the case
-        await expect(MyCases.blankText).toHaveText("")
+        await expect(MyCases.blankText).toHaveText("big zesty shrek")
     })
     it('should test the search bar to confirm it is working properly', async () => {
-        
+        await expect(MyCases.searchInput).toBeDisplayed();
     })
 })

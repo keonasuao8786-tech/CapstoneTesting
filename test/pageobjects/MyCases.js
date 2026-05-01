@@ -27,10 +27,10 @@ class MyCases extends Page {
         return $('[role="presentation"]>[class*="fui-TableCellLayout"]');
     }
     get case1 () {
-        return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"Z no touchy please Don't delete")]`);
+        return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")]`);
     }
     get case1Page () {
-        return $(`[value="Z no touchy please Don't delete"]`);
+        return $(`[class*="fui-Title2"]`);
     }
     get blankCell1 () {
         return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(2)');
@@ -51,7 +51,11 @@ class MyCases extends Page {
         return $('[class*="fui-DataGridRow"]:nth-of-type(1)>[class*="fui-DataGridCell"]:nth-of-type(4) [class*="fui-Text"]')
     }
     get clientIcon () {
-        return $('[class*="fui-DataGridRow"]:first-of-type>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Persona rlroi9i"]>[class*="fui-Avatar"]>[class="fui-Avatar__initials rip04v ___1o5zahd fnnb6wn f1n057jc"]')
+        return $('[class*="fui-DataGridRow"]:nth-of-type(1)>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Persona"]>[class*="fui-Avatar"]>[class*="fui-Avatar__initials"]')
+    }
+    async pageCheck () {
+        await expect(this.case1Page).toBeDisplayed();
+        await expect(this.case1Page).toHaveText(`ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ`);
     }
 }
 export default new MyCases();
