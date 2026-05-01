@@ -93,5 +93,8 @@ describe('My Cases Table Testing', () => {
 
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveText();
+
+        await SearchBar.negativeSearchClient();
+        await expect(MyCases.case1).not.toBeDisplayed();
     })
 })

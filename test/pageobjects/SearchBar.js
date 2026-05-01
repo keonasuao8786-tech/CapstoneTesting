@@ -24,6 +24,11 @@ class SearchBar extends Page {
     async searchClear () {
         await this.clearButton.click();
     }
+
+    async negativeSearchClient () {
+        const text = await MyCases.caseTypeValue.getText();
+        await this.searchInput.setValue(text);
+    }
 }
 
 export default new SearchBar();

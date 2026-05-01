@@ -20,11 +20,11 @@ class MyCases extends Page {
     get columnOrderDesc () {
         return $('[aria-sort ="descending"]');
     }
-    get caseColumnType () {
-        return $('[role="presentation"]>[class*="fui-TableCellLayout"]');
-    }
     get case1 () {
         return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")]`);
+    }
+    get caseTypeValue () {
+        return $(`[class*="fui-DataGridRow"]:first-of-type>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout ___1mzifb9"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Text"]`)
     }
     get case2 () {
         return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"Z no touchy please Don't delete")]`)
