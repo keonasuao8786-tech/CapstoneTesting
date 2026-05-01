@@ -5,9 +5,6 @@ class MyCases extends Page {
     get caseType () {
         return $('[role="columnheader"]>[class*="___1g9gf5i"]');
     }
-    get searchInput () {
-        return $('[class*="fui-Input__input"]');
-    }
     get nameColumn () {
         return $('//span[@class="fui-TableCellLayout__main"][contains(text(),"Name")]');
     }

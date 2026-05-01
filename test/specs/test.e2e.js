@@ -10,7 +10,7 @@ describe('My Cases Table Testing', () => {
         await expect(LoginPage.inputUsername).toExist();
 
         await LoginPage.login();
-        await expect(MyCases.searchInput).toExist();
+        await expect(SearchBar.searchInput).toExist();
 
         await MyCases.nameColumn.click();
         // Checking if the column contains the ascending selector
@@ -41,7 +41,7 @@ describe('My Cases Table Testing', () => {
         await MyCases.pageCheck();
 
         await browser.back();
-        await expect(MyCases.searchInput).toBeDisplayed();
+        await expect(SearchBar.searchInput).toBeDisplayed();
         // Sorting the column again so I don't have to change my selector after every back(granted this will break if somebody makes a case starting with A, B, or Can but I'll cross that bridge when I get to it)
         await MyCases.nameColumn.doubleClick();
 
@@ -77,15 +77,15 @@ describe('My Cases Table Testing', () => {
         await expect(MyCases.blankText).toHaveText("big zesty shrek")
     })
     it('should test the search bar to confirm it is working properly, P/N Testing', async () => {
-        await expect(MyCases.searchInput).toBeDisplayed();
+        await expect(SearchBar.searchInput).toBeDisplayed();
         await SearchBar.searchUsingExistingCase();
         await expect(MyCases.case2).not.toBeDisplayed();
         await SearchBar.searchClear();
-        await expect(MyCases.searchInput).not.toHaveText();
+        await expect(SearchBar.searchInput).not.toHaveText();
         await SearchBar.searchUsingAnotherCase();
         await expect(MyCases.case1).not.toBeDisplayed();
-        
+
         await SearchBar.searchClear();
-        await expect(MyCases.searchInput).not.toHaveText();
+        await expect(SearchBar.searchInput).not.toHaveText();
     })
 })
