@@ -26,14 +26,6 @@ class MyTasks extends Page {
     get caseMenuText () {
         return $(`[class*="fui-Dropdown ___11d5zms"]>[class*="fui-Dropdown__button"]>[class*="___loo0yx0"]>[class*="fui-Text"]`);
     }
-    async menuTextCheck () {
-        await this.caseDropdown.click();
-        await this.optionOne.waitForDisplayed();
-        const text = await this.optionOne.getText();
-        console.log(text);
-        await this.optionOne.click();
-        await expect(this.caseMenuText).toHaveText(text);
-    }
 }
 
 export default new MyTasks();
