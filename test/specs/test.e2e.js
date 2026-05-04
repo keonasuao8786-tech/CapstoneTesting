@@ -13,11 +13,9 @@ describe('My Cases Table Testing', () => {
         await expect(SearchBar.searchInput).toExist();
 
         await MyCases.nameColumn.click();
-        // Checking if the column contains the ascending selector
-        await expect(MyCases.columnOrderAsc).toExist();
+        await expect(MyCases.columnOrderAsc).toExist(); // Checking if the column contains the ascending selector
         await MyCases.nameColumn.click();
-        // Checking if the column contains the descending selector
-        await expect(MyCases.columnOrderDesc).toExist();
+        await expect(MyCases.columnOrderDesc).toExist(); // Checking if the column contains the descending selector
 
         await MyCases.retainedBy.click();
         await expect(MyCases.columnOrderAsc).toExist();
@@ -32,33 +30,28 @@ describe('My Cases Table Testing', () => {
         await MyCases.nameColumn.doubleClick();
 
         await expect(MyCases.caseType).toBeDisplayed();
-        // Checking if the Case Type column doesn't contain the "button" role
-        await expect(MyCases.caseType).not.toHaveAttr('role', 'button')
+        await expect(MyCases.caseType).not.toHaveAttr('role', 'button')// Checking if the Case Type column doesn't contain the "button" role
     })
     it('should navigate using the cases in the table correctly', async () => {
         await MyCases.case1.click();
-        // Selecting the name of the case to make sure it takes us to the corresponding case page
-        await MyCases.pageCheck();
+        await MyCases.pageCheck(); // Selecting the name of the case to make sure it takes us to the corresponding case page
 
         await browser.back();
         await expect(SearchBar.searchInput).toBeDisplayed();
-        // Sorting the column again so I don't have to change my selector after every back(granted this will break if somebody makes a case starting with A, B, or Can but I'll cross that bridge when I get to it)
-        await MyCases.nameColumn.doubleClick();
+        await MyCases.nameColumn.doubleClick(); // Sorting the column again so I don't have to change my selector after every back
 
         await MyCases.blankCell1.click();
         await expect(MyCases.case1Page).not.toBeDisplayed();
-        // Confirming clicking anywhere except the name column regularly won't take us to the case page
-        await MyCases.clientCell.click();
+        await MyCases.clientCell.click(); // Confirming clicking anywhere except the name column regularly won't take us to the case page
         await expect(MyCases.case1Page).not.toBeDisplayed();
         await MyCases.status1Cell.click();
         await expect(MyCases.case1Page).not.toBeDisplayed();
 
         await MyCases.blankCell1.doubleClick();
         await MyCases.pageCheck();   //For now I'm only going to test one case but if I have time at the end I'll add more
-        // Confirming that a double click anywhere in the row will take you to the case page
         await browser.back();
         await MyCases.nameColumn.doubleClick();
-        await MyCases.client1Cell.doubleClick();
+        await MyCases.client1Cell.doubleClick(); // Confirming that a double click anywhere in the row will take you to the case page
         await MyCases.pageCheck();
         await browser.back();
         await MyCases.nameColumn.doubleClick();
@@ -69,40 +62,45 @@ describe('My Cases Table Testing', () => {
         await MyCases.nameColumn.doubleClick();
     })
     it('should verify cases display user initials, a status value, and the correct case type association', async () => {
-        // Confirming the client has an icon with the initials of their name
-        await expect(MyCases.clientIcon).toHaveText("D")
-        // Confirming the case I am currently testing doesn't have a status assigned to it
-        await expect(MyCases.case1Status).toHaveText("new")
-        // Checking to see what case type is assigned to the case
-        await expect(MyCases.blankText).toHaveText("big zesty shrek")
+        await expect(MyCases.clientIcon).toHaveText("D"); // Confirming the client has an icon with the initials of their name
+        
+        await expect(MyCases.case1Status).toHaveText("new"); // Checking if the case I am currently testing has a status assigned to it
+        
+        await expect(MyCases.blankText).toHaveText("big zesty shrek"); // Checking to see what case type is assigned to the case
     })
     it('should test the search bar to confirm it is working properly, P/N Testing', async () => {
         await expect(SearchBar.searchInput).toBeDisplayed();
-        await SearchBar.searchUsingExistingCase();
-        await expect(MyCases.case2).not.toBeDisplayed();
+        await SearchBar.searchUsingExistingCase(); // Searching for the case I am currently testing
+        await expect(MyCases.case2).not.toBeDisplayed(); // Confirming the other cases aren't being displayed when I search for a case
 
-        await SearchBar.searchClear();
+        await SearchBar.searchClear(); // Clearing the search bar after every search
         await expect(SearchBar.searchInput).not.toHaveText();
 
-        await SearchBar.searchUsingAnotherCase();
+        await SearchBar.searchUsingAnotherCase(); // Searching for another case
         await expect(MyCases.case1).not.toBeDisplayed();
 
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveText();
-        await SearchBar.searchUsingClientName();
-        await expect(MyCases.case1).toBeDisplayed();
+
+        await SearchBar.searchUsingClientName(); // Searching using the name of a client
+        await expect(MyCases.case1).toBeDisplayed(); // Checking to see if the cases retained by that client show up in the search results
         await expect(MyCases.case2).toBeDisplayed();
 
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveText();
 
-        await SearchBar.negativeSearchClient();
-        await expect(MyCases.case1).not.toBeDisplayed();
+        await SearchBar.negativeSearchCT(); // Checking to see if searching for the Case Type value returns a result
+        await expect(MyCases.case1).not.toBeDisplayed(); // Confirming that no results show up
 
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveText();
 
-        await SearchBar.negativeSearchStatus();
-        await expect(MyCases.case1).not.toBeDisplayed();
+        await SearchBar.negativeSearchStatus(); // Checking to see if searching for the Status value returns a result
+        await expect(MyCases.case1).not.toBeDisplayed(); // Confirming that no results show up
+
+        await SearchBar.searchClear();
+        await expect(SearchBar.searchInput).not.toHaveText();
+
+        await SearchBar.infoIcon.click(); // Selecting the information icon next to the search bar to confirm it has text inside of it
     })
 })

@@ -7,7 +7,13 @@ class SearchBar extends Page {
         return $('[class*="fui-Input__input"]');
     }
     get clearButton () {
-        return $(`[class*="fui-Input__contentAfter"]>[class*="fui-Button"]>[class="fui-Button__icon rywnvv2"]>[class*="fui-Icon"]`)
+        return $(`[class*="fui-Input__contentAfter"]>[class*="fui-Button"]>[class="fui-Button__icon rywnvv2"]>[class*="fui-Icon"]`);
+    }
+    get infoIcon () {
+        return $(`[class*="fui-InfoButton"]>[class*="fui-Icon fui-Icon-regular"]`);
+    }
+    get iconText () {
+        return $(`[class*="fui-PopoverSurface"]>[class*="___zwjznv0"]`);
     }
     async searchUsingExistingCase() {
         const text = await MyCases.case1.getText();
@@ -25,7 +31,7 @@ class SearchBar extends Page {
         await this.clearButton.click();
     }
 
-    async negativeSearchClient () {
+    async negativeSearchCT () {
         const text = await MyCases.caseTypeValue.getText();
         await this.searchInput.setValue(text);
     }
