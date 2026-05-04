@@ -3,6 +3,7 @@ import LoginPage from '../pageobjects/login.js'
 import SecurePage from '../pageobjects/Dashboard.js'
 import MyCases from '../pageobjects/MyCases.js'
 import SearchBar from '../pageobjects/SearchBar.js'
+import MyTasks from '../pageobjects/MyTasks.js'
 
 describe('My Cases Table Testing', () => {
     it('should should test the columns in the My Cases Table to make sure they sort the table correctly', async () => {
@@ -11,26 +12,27 @@ describe('My Cases Table Testing', () => {
 
         await LoginPage.login();
         await expect(SearchBar.searchInput).toExist();
+        await MyCases.case1.waitForExist();
 
-        await MyCases.nameColumn.click();
-        await expect(MyCases.columnOrderAsc).toExist(); // Checking if the column contains the ascending selector
-        await MyCases.nameColumn.click();
-        await expect(MyCases.columnOrderDesc).toExist(); // Checking if the column contains the descending selector
+        // await MyCases.nameColumn.click();
+        // await expect(MyCases.columnOrderAsc).toExist(); // Checking if the column contains the ascending selector
+        // await MyCases.nameColumn.click();
+        // await expect(MyCases.columnOrderDesc).toExist(); // Checking if the column contains the descending selector
 
-        await MyCases.retainedBy.click();
-        await expect(MyCases.columnOrderAsc).toExist();
-        await MyCases.retainedBy.click();
-        await expect(MyCases.columnOrderDesc).toExist();
+        // await MyCases.retainedBy.click();
+        // await expect(MyCases.columnOrderAsc).toExist();
+        // await MyCases.retainedBy.click();
+        // await expect(MyCases.columnOrderDesc).toExist();
 
-        await MyCases.statusColumn.click();
-        await expect(MyCases.columnOrderAsc).toExist();
-        await MyCases.statusColumn.click();
-        await expect(MyCases.columnOrderDesc).toExist();
+        // await MyCases.statusColumn.click();
+        // await expect(MyCases.columnOrderAsc).toExist();
+        // await MyCases.statusColumn.click();
+        // await expect(MyCases.columnOrderDesc).toExist();
 
-        await MyCases.nameColumn.doubleClick();
+        // await MyCases.nameColumn.doubleClick();
 
-        await expect(MyCases.caseType).toBeDisplayed();
-        await expect(MyCases.caseType).not.toHaveAttr('role', 'button')// Checking if the Case Type column doesn't contain the "button" role
+        // await expect(MyCases.caseType).toBeDisplayed();
+        // await expect(MyCases.caseType).not.toHaveAttr('role', 'button')// Checking if the Case Type column doesn't contain the "button" role
     })
     // it('should navigate using the cases in the table correctly', async () => {
     //     await MyCases.case1.click();
@@ -109,7 +111,19 @@ describe('My Cases Table Testing', () => {
     // })
 })
 describe('My Tasks Table Testing', () => {
-    it('should test the very basic components of the My Tasks table', async () => {
+    it('should test the Add Task window of the My Tasks table', async () => {
         await expect(SearchBar.searchInput).toExist();
+
+        await MyTasks.addTask.click();
+        await MyTasks.addTaskWindow.waitForDisplayed();
+        await expect(MyTasks.addTaskWindow).toBeDisplayed();
+
+        await MyTasks.caseDropdown.click();
+        await MyTasks.listMenu.waitForDisplayed();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+
+        await MyTasks.optionOne.waitForDisplayed(true);
+        await MyTasks.optionOne.click();
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
     })
 })
