@@ -8,6 +8,9 @@ class MyTasks extends Page {
     get addTaskWindow () {
         return $(`[class="fui-DialogSurface r1u3t6p6 ___r5ph3u0 fw76w1l fvgz9i8 f1c3wz7s"]`);
     }
+    get textBox () {
+        return $(`[name="text"]`);
+    }
     get cancelButton () {
         return $(`[class*="fui-Button"][data-testid="task-dialog-cancel-button"]`);
     }
@@ -32,6 +35,9 @@ class MyTasks extends Page {
     async failMsg () {
         await this.milestoneMenu.click();
         console.log(`This Case does not have any milestones`);
+    }
+    async finishTaskCrtn () {
+        await this.textBox.setValue(`This is a test task; do NOT delete unless prompted`);
     }
 }
 

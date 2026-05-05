@@ -15,13 +15,10 @@ class SearchBar extends Page {
     get iconText () {
         return $(`[class*="fui-PopoverSurface"]>[class*="___zwjznv0"]`);
     }
-    async searchUsingExistingCase() {
-        const text = await MyCases.case1.getText();
-        await this.searchInput.setValue(text);
-    }
-    async searchUsingAnotherCase() {
-        const text = await MyCases.case2.getText();
-        await this.searchInput.setValue(text);
+    async case1NameSearch () {
+        const name = await MyCases.case1.getText();
+        await this.searchInput.setValue(name);
+        await expect(MyCases.case1).toHaveText(name);
     }
     async searchUsingClientName() {
         const text = await MyCases.clientName.getText();
@@ -33,11 +30,19 @@ class SearchBar extends Page {
 
     async negativeSearchCT () {
         const text = await MyCases.caseTypeValue.getText();
+        if(text.length > 0) {
         await this.searchInput.setValue(text);
+        } else {
+            console.log(`This row doesn't have a case type`)
+        }
     }
     async negativeSearchStatus () {
         const text = await MyCases.statusValue.getText();
+        if(text.length > 0) {
         await this.searchInput.setValue(text);
+        } else {
+            console.log(`This row doesn't have a status`)
+        }
     }
 }
 
