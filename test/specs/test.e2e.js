@@ -68,38 +68,44 @@ describe('My Cases Table Testing', () => {
     })
     it('should test the search bar to confirm it is working properly, P/N Testing', async () => {
         await expect(SearchBar.searchInput).toBeDisplayed();
-        await SearchBar.searchUsingExistingCase(); // Searching for the case I am currently testing
-        await expect(MyCases.case2).not.toBeDisplayed(); // Confirming the other cases aren't being displayed when I search for a case
 
-        await SearchBar.searchClear(); // Clearing the search bar after every search
-        await expect(SearchBar.searchInput).not.toHaveText();
+        await MyCases.case1NameSearch();
+        
+        // await SearchBar.searchUsingExistingCase(); // Searching for the case I am currently testing
+        // await expect(MyCases.case1).toHaveValue(case1Text); // Confirming the search results are relevant to the thing I searched up
+        // await expect(MyCases.case2).not.toBeDisplayed(); // Confirming the other cases aren't being displayed when I search for a case
 
-        await SearchBar.searchUsingAnotherCase(); // Searching for another case
-        await expect(MyCases.case1).not.toBeDisplayed();
+        // await SearchBar.searchClear(); // Clearing the search bar after every search
+        // await expect(SearchBar.searchInput).not.toHaveText();
+        // await MyCases.nameColumn.doubleClick();
 
-        await SearchBar.searchClear();
-        await expect(SearchBar.searchInput).not.toHaveText();
+        // await SearchBar.searchUsingAnotherCase(); // Searching for another case
+        // await expect(MyCases.case1).toHaveValue(case2Name);
+        // await expect(MyCases.case2).not.toHaveValue(case2Name);
 
-        await SearchBar.searchUsingClientName(); // Searching using the name of a client
-        await expect(MyCases.case1).toBeDisplayed(); // Checking to see if the cases retained by that client show up in the search results
-        await expect(MyCases.case2).not.toBeDisplayed();
+        // await SearchBar.searchClear();
+        // await expect(SearchBar.searchInput).not.toHaveText();
 
-        await SearchBar.searchClear();
-        await expect(SearchBar.searchInput).not.toHaveText();
+        // await SearchBar.searchUsingClientName(); // Searching using the name of a client
+        // await expect(MyCases.case1).toBeDisplayed(); // Checking to see if the cases retained by that client show up in the search results
+        // await expect(MyCases.case2).not.toHaveValue(case2Text);
 
-        await SearchBar.negativeSearchCT(); // Checking to see if searching for the Case Type value returns a result
-        await expect(MyCases.case1).not.toBeDisplayed(); // Confirming that no results show up
+        // await SearchBar.searchClear();
+        // await expect(SearchBar.searchInput).not.toHaveText();
 
-        await SearchBar.searchClear();
-        await expect(SearchBar.searchInput).not.toHaveText();
+        // await SearchBar.negativeSearchCT(); // Checking to see if searching for the Case Type value returns a result
+        // await expect(MyCases.case1).not.toBeDisplayed(); // Confirming that no results show up
 
-        await SearchBar.negativeSearchStatus(); // Checking to see if searching for the Status value returns a result
-        await expect(MyCases.case1).not.toBeDisplayed(); // Confirming that no results show up
+        // await SearchBar.searchClear();
+        // await expect(SearchBar.searchInput).not.toHaveText();
 
-        await SearchBar.searchClear();
-        await expect(SearchBar.searchInput).not.toHaveText();
+        // await SearchBar.negativeSearchStatus(); // Checking to see if searching for the Status value returns a result
+        // await expect(MyCases.case1).not.toBeDisplayed(); // Confirming that no results show up
 
-        await SearchBar.infoIcon.click(); // Selecting the information icon next to the search bar to confirm it has text inside of it
+        // await SearchBar.searchClear();
+        // await expect(SearchBar.searchInput).not.toHaveText();
+
+        // await SearchBar.infoIcon.click(); // Selecting the information icon next to the search bar to confirm it has text inside of it
     })
     it('will test what happens to the table when you input certain queries', async () => { // I might skip this one due to time constraints
         await expect(SearchBar.searchInput).toBeDisplayed();

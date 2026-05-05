@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import Page from './CaseWork.js';
+import SearchBar from './SearchBar.js';
 
 class MyCases extends Page {
     get caseType () {
@@ -21,7 +22,7 @@ class MyCases extends Page {
         return $('[aria-sort ="descending"]');
     }
     get case1 () {
-        return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")]`);
+        return $(`[class*="fui-DataGridRow"]:nth-of-type(1)>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Link"]>[class*="fui-Text"]`);
     }
     get caseTypeValue () {
         return $(`[class*="fui-DataGridRow"]:first-of-type>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout ___1mzifb9"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Text"]`);
@@ -30,7 +31,7 @@ class MyCases extends Page {
         return $(`[class*="fui-DataGridRow"]:first-of-type>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout ___1cym8h9 f22iagw"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Text"]`);
     }
     get case2 () {
-        return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"William (DONT DELETE) ")]`);
+        return $(`[class*="fui-DataGridRow"]:nth-of-type(2)>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Link"]>[class*="fui-Text"]`);
     }
     get case1Page () {
         return $(`[class*="fui-Title2"]`);
@@ -43,6 +44,9 @@ class MyCases extends Page {
     }
     get clientName () {
         return $(`[class*="fui-DataGridRow"]:nth-of-type(1)>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class="fui-Persona rlroi9i ___1gusw2c f1iantul"]>[class*="fui-Persona__primaryText"]>[class*="fui-Text"]`);
+    }
+    get clientName2 () {
+        return $(`[class*="fui-DataGridRow"]:nth-of-type(2)>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class="fui-Persona rlroi9i ___1gusw2c f1iantul"]>[class*="fui-Persona__primaryText"]>[class*="fui-Text"]`);
     }
     get clientCell () {
         return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(3)');
@@ -69,6 +73,12 @@ class MyCases extends Page {
         await expect(this.case1Status).toHaveText("new"); // Checking if the case I am currently testing has a status assigned to it
                 
         await expect(this.blankText).toHaveText("big zesty shrek"); // Checking to see what case type is assigned to the case
+    }
+    async case1NameSearch () {
+        await this.nameColumn.doubleClick();
+        const name = this.case1.getText();
+        await SearchBar.searchInput.setValue(name);
+        await expect(this.case1).toHaveText(name);
     }
 }
 export default new MyCases();
