@@ -12,7 +12,7 @@ class MyTasks extends Page {
         return $(`[class*="fui-Button"][data-testid="task-dialog-cancel-button"]`);
     }
     get caseDropdown () {
-        return $(`[class*="fui-Dropdown ___1emhu78"]>[class*="fui-Dropdown__button"]`);
+        return $(`//span[@class="fui-Text ___zei06i0 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649 fxkbij4"][contains(text(),"Select a Case")]`);
     }
     get listMenu () {
         return $(`[class*="fui-Listbox"]`);
@@ -25,6 +25,13 @@ class MyTasks extends Page {
     }
     get caseMenuText () {
         return $(`[class*="fui-Dropdown ___11d5zms"]>[class*="fui-Dropdown__button"]>[class*="___loo0yx0"]>[class*="fui-Text"]`);
+    }
+    get milestoneMenu () {
+        return $(`//span[@class="fui-Text ___zei06i0 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649 fxkbij4"][contains(text(),"Select Milestone")]`)
+    }
+    async failMsg () {
+        await this.milestoneMenu.click();
+        console.log(`This Case does not have any milestones`);
     }
 }
 

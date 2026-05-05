@@ -30,7 +30,7 @@ class MyCases extends Page {
         return $(`[class*="fui-DataGridRow"]:first-of-type>[class*="fui-DataGridCell"]>[class*="fui-TableCellLayout ___1cym8h9 f22iagw"]>[class*="fui-TableCellLayout__content"]>[class="fui-TableCellLayout__main"]>[class*="fui-Text"]`);
     }
     get case2 () {
-        return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"Z no touchy please Don't delete")]`);
+        return $(`//span[@class="fui-Text ___c56hd20 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649"][contains(text(),"William (DONT DELETE) ")]`);
     }
     get case1Page () {
         return $(`[class*="fui-Title2"]`);
@@ -62,6 +62,13 @@ class MyCases extends Page {
     async pageCheck () {
         await expect(this.case1Page).toBeDisplayed();
         await expect(this.case1Page).toHaveText(`ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ`);
+    }
+    async clientCheck () {
+        await expect(this.clientIcon).toHaveText("B"); // Confirming the client has an icon with the initials of their name
+                
+        await expect(this.case1Status).toHaveText("new"); // Checking if the case I am currently testing has a status assigned to it
+                
+        await expect(this.blankText).toHaveText("big zesty shrek"); // Checking to see what case type is assigned to the case
     }
 }
 export default new MyCases();
