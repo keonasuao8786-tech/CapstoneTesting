@@ -4,16 +4,16 @@ import SearchBar from './SearchBar.js';
 
 class MyCases extends Page {
     get caseType () {
-        return $('[role="columnheader"]>[class*="___1g9gf5i"]');
+        return $('[role="columnheader"]:nth-of-type(2)>[class*="fui-DataGridHeaderCell__button"]');
     }
     get nameColumn () {
         return $('[role="columnheader"]:nth-of-type(1)>[class*="fui-DataGridHeaderCell__button"]');
     }
     get retainedBy () {
-        return $('[role="columnheader"]:nth-of-type(2)>[class*="fui-DataGridHeaderCell__button"]');
+        return $('[role="columnheader"]:nth-of-type(3)>[class*="fui-DataGridHeaderCell__button"]');
     }
     get statusColumn () {
-        return $('[role="columnheader"]:nth-of-type(3)>[class*="fui-DataGridHeaderCell__button"]');
+        return $('[role="columnheader"]:nth-of-type(4)>[class*="fui-DataGridHeaderCell__button"]');
     }
     get columnOrderAsc () {
         return $('[aria-sort="ascending"]');
