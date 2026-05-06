@@ -4,17 +4,17 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-class LoginPage extends Page {
+class CaseLogin extends Page {
    
-    get inputUsername () {
+    get username () {
         return $('[type="text"]');
     }
 
-    get inputPassword () {
+    get password () {
         return $('[type="password"]');
     }
 
-    get btnSubmit () {
+    get submit () {
         return $('[data-testid="login-submit"]')
     }
     get logoutBtn () {
@@ -22,18 +22,18 @@ class LoginPage extends Page {
     }
 
     async login (username, password) {
-        await this.inputUsername.setValue(process.env.my_username);
-        await this.inputPassword.setValue(process.env.my_password);
-        await this.btnSubmit.click();
+        await this.username.setValue(process.env.my_username);
+        await this.password.setValue(process.env.my_password);
+        await this.submit.click();
     }
 
     async logout () {
         await this.logoutBtn.click();
     }
 
-    open () {
+    openPage () {
         return super.open('login');
     }
 }
 
-export default new LoginPage();
+export default new CaseLogin();

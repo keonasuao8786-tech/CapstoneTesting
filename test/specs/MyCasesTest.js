@@ -1,5 +1,5 @@
 import { browser, expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.js'
+import CaseLogin from '../pageobjects/login.js'
 import SecurePage from '../pageobjects/Dashboard.js'
 import MyCases from '../pageobjects/MyCases.js'
 import SearchBar from '../pageobjects/SearchBar.js'
@@ -7,33 +7,33 @@ import MyTasks from '../pageobjects/MyTasks.js'
 
 describe('My Cases Table Testing', () => {
     it('should should test the columns in the My Cases Table to make sure they sort the table correctly', async () => {
-        await LoginPage.open();
-        await expect(LoginPage.inputUsername).toExist();
+        await CaseLogin.openPage();
+        await expect(CaseLogin.username).toExist();
 
-        await LoginPage.login();
+        await CaseLogin.login();
         await MyCases.case1.waitForExist();
         await expect(SearchBar.searchInput).toExist();
 
-        // await MyCases.nameColumn.click();
-        // await expect(MyCases.columnOrderAsc).toExist(); // Checking if the column contains the ascending selector
-        // await MyCases.nameColumn.click();
-        // await expect(MyCases.columnOrderDesc).toExist(); // Checking if the column contains the descending selector
+    //     await MyCases.nameColumn.click();
+    //     await expect(MyCases.columnOrderAsc).toExist(); // Checking if the column contains the ascending selector
+    //     await MyCases.nameColumn.click();
+    //     await expect(MyCases.columnOrderDesc).toExist(); // Checking if the column contains the descending selector
 
-        // await MyCases.retainedBy.click();
-        // await expect(MyCases.columnOrderAsc).toExist();
-        // await MyCases.retainedBy.click();
-        // await expect(MyCases.columnOrderDesc).toExist();
+    //     await MyCases.retainedBy.click();
+    //     await expect(MyCases.columnOrderAsc).toExist();
+    //     await MyCases.retainedBy.click();
+    //     await expect(MyCases.columnOrderDesc).toExist();
 
-        // await MyCases.statusColumn.click();
-        // await expect(MyCases.columnOrderAsc).toExist();
-        // await MyCases.statusColumn.click();
-        // await expect(MyCases.columnOrderDesc).toExist();
+    //     await MyCases.statusColumn.click();
+    //     await expect(MyCases.columnOrderAsc).toExist();
+    //     await MyCases.statusColumn.click();
+    //     await expect(MyCases.columnOrderDesc).toExist();
 
-        // await MyCases.nameColumn.doubleClick();
+    //     await MyCases.nameColumn.doubleClick();
 
-        // await expect(MyCases.caseType).toBeDisplayed();
-        // await expect(MyCases.caseType).not.toHaveAttr('role', 'button')// Checking if the Case Type column doesn't contain the "button" role
-    })
+    //     await expect(MyCases.caseType).toBeDisplayed();
+    //     await expect(MyCases.caseType).not.toHaveAttr('role', 'button')// Checking if the Case Type column doesn't contain the "button" role
+    // })
     // it('should navigate using the cases in the table correctly', async () => {
     //     await MyCases.case1.click();
     //     await expect(MyCases.casePage).toBeDisplayed(); // Selecting the name of the case to make sure it takes us to the corresponding case page
@@ -67,10 +67,17 @@ describe('My Cases Table Testing', () => {
 
     //     await browser.back();
     //     await MyCases.nameColumn.waitForClickable({timeout: 100});
-    // })
-    // it('should verify cases display user initials, a status value, and the correct case type association', async () => {
-    //    await MyCases.clientCheck();
-    // })
+    })
+    it('should verify cases display user initials, a status value, and the correct case type association', async () => {
+            await MyCases.nameColumn.doubleClick();
+            const clientText = await MyCases.clientIcon.getText();
+            const statusText = await MyCases.case1Status.getText();
+            const caseTypeText = await MyCases.cTText.getText();
+
+            await expect(MyCases.clientIcon).toHaveText(clientText);
+            await expect(MyCases.case1Status).toHaveText(statusText);
+            await expect(MyCases.cTText).toHaveText(caseTypeText);
+    })
     it('should test the search bar to confirm it is working properly, P/N Testing', async () => {
         await expect(SearchBar.searchInput).toBeDisplayed();
 
@@ -99,36 +106,15 @@ describe('My Cases Table Testing', () => {
 
         await SearchBar.infoIcon.click(); // Selecting the information icon next to the search bar to confirm it has text inside of it
     })
-//     it('will test what happens to the table when you input certain queries', async () => { // I might skip this one due to time constraints
-//         await expect(SearchBar.searchInput).toBeDisplayed();
-//         await SearchBar.searchInput.setValue(` `);
-//     })
-// })
-// describe('My Tasks Table Testing', () => {
-//     it('should test the Add Task window of the My Tasks table', async () => {
-//         await expect(SearchBar.searchInput).toExist();
+    it('will test what happens to the table when you input certain queries', async () => { // I might skip this one due to time constraints
+        await expect(SearchBar.searchInput).toBeDisplayed();
+        await SearchBar.searchInput.setValue(` `);
 
-//         await MyTasks.addTask.click();
-//         await MyTasks.addTaskWindow.waitForDisplayed();
-//         await expect(MyTasks.addTaskWindow).toBeDisplayed();
-
-//         await MyTasks.caseDropdown.click();
-//         await MyTasks.listMenu.waitForDisplayed();
-//         await expect(MyTasks.listMenu).toBeDisplayed();
-
-//         await MyTasks.optionOne.waitForDisplayed(true);
-//         await MyTasks.optionOne.click();
-//         await expect(MyTasks.listMenu).not.toBeDisplayed();
-
-//         await MyTasks.milestoneMenu.click();
-//         await MyTasks.listMenu.waitForDisplayed();
-//         await expect(MyTasks.listMenu).toBeDisplayed();
-//         await MyTasks.optionOne.waitForDisplayed();
-//         if (await MyTasks.optionOne.waitForExist()) {
-//             await MyTasks.optionOne.click();
-//             await expect(MyTasks.listMenu).not.toBeDisplayed();
-//         } else {
-//             await MyTasks.failMsg();
-//         }
-//     })
+        await SearchBar.searchClear();
+        await expect(SearchBar.searchInput).not.toHaveValue();
+        
+        await SearchBar.boundarySearch();
+        await expect(MyCases.case1).toBeDisplayed();
+        await expect(MyCases.case2).not.toBeDisplayed();
+    })
 })

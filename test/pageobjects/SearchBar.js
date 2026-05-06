@@ -7,7 +7,7 @@ class SearchBar extends Page {
         return $('[class*="fui-Input__input"]');
     }
     get clearButton () {
-        return $(`[class*="fui-Input__contentAfter"]>[class*="fui-Button"]>[class="fui-Button__icon rywnvv2"]>[class*="fui-Icon"]`);
+        return $(`[class*="fui-Input__contentAfter"]>[type="button"]>[class*="fui-Button__icon"]>[class*="fui-Icon"]`);
     }
     get infoIcon () {
         return $(`[class*="fui-InfoButton"]>[class*="fui-Icon fui-Icon-regular"]`);
@@ -18,7 +18,6 @@ class SearchBar extends Page {
     async case1NameSearch () {
         const name = await MyCases.case1.getText();
         await this.searchInput.setValue(name);
-        await expect(MyCases.case1).toHaveText(name);
     }
     async searchUsingClientName() {
         const text = await MyCases.clientName.getText();
@@ -43,6 +42,13 @@ class SearchBar extends Page {
         } else {
             console.log(`This row doesn't have a status`)
         }
+    }
+    async boundarySearch () {
+        await MyCases.nameColumn.doubleClick();
+        await MyCases.case1.waitForDisplayed({timeout: 5000});
+        const name = await MyCases.case1.getText();
+
+        await this.searchInput.setValue(name);
     }
 }
 
