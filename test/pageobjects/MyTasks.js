@@ -15,7 +15,7 @@ class MyTasks extends Page {
         return $(`[class*="fui-Button"][data-testid="task-dialog-cancel-button"]`);
     }
     get caseDropdown () {
-        return $(`//span[@class="fui-Text ___zei06i0 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649 fxkbij4"][contains(text(),"Select a Case")]`);
+        return $(`[data-testid="case-filter-menu"]`);
     }
     get listMenu () {
         return $(`[class*="fui-Listbox"]`);
@@ -30,14 +30,13 @@ class MyTasks extends Page {
         return $(`[class*="fui-Dropdown ___11d5zms"]>[class*="fui-Dropdown__button"]>[class*="___loo0yx0"]>[class*="fui-Text"]`);
     }
     get milestoneMenu () {
-        return $(`//span[@class="fui-Text ___zei06i0 fk6fouc fkhj508 f1i3iumi figsok6 fpgzoln f1w7gpdv f6juhto f1gl81tg f2jf649 fxkbij4"][contains(text(),"Select Milestone")]`)
+        return $(`[data-testid="milestone-dropdown-menu"]`)
     }
-    async failMsg () {
-        await this.milestoneMenu.click();
-        console.log(`This Case does not have any milestones`);
+    get dueBy () {
+        return $(`[data-testid="task-dialog-dueby-checkbox"]`);
     }
-    async finishTaskCrtn () {
-        await this.textBox.setValue(`This is a test task; do NOT delete unless prompted`);
+    get dateSelect () {
+        return $(`[id="datePicker-inputr21e"]`);
     }
 }
 
