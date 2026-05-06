@@ -38,6 +38,13 @@ class MyTasks extends Page {
     get dateSelect () {
         return $(`[id="datePicker-inputr21e"]`);
     }
+    async failMsg () {
+        await this.milestoneMenu.click();
+        console.log(`This Case does not have any milestones`);
+    }
+    async finishTaskCrtn () {
+        await this.textBox.setValue(`This is a test task; do NOT delete unless prompted`);
+    }
 }
 
 export default new MyTasks();
