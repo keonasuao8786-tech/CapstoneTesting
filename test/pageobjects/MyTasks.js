@@ -23,9 +23,6 @@ class MyTasks extends Page {
     get optionOne () {
         return $('[role="option"]:nth-of-type(1)');
     }
-    get optionTwo () {
-        return $('[role="option"]:nth-of-type(2)');
-    }
     get caseMenuText () {
         return $(`[class*="fui-Dropdown ___11d5zms"]>[class*="fui-Dropdown__button"]>[class*="___loo0yx0"]>[class*="fui-Text"]`);
     }
@@ -55,6 +52,9 @@ class MyTasks extends Page {
     }
     get taskOne () {
         return $(`[class*="___1k9q2mx"]:nth-of-type(1)`);
+    }
+    get taskTwo () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(2)`);
     }
     get billable () {
         return $(`[type="button"][name="billable"]`);
@@ -97,7 +97,11 @@ class MyTasks extends Page {
     async testDesc () {
         await this.textBox.setValue(this.desc);
     }
+    async testDesc2 () {
+        await this.textBox.setValue(this.desc2);
+    }
     desc = (`This is a test task; do NOT delete unless prompted`);
+    desc2 = (`This is a test non-billable task; do NOT delete unless prompted`)
 }
 
 export default new MyTasks();
