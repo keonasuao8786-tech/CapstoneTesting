@@ -56,6 +56,39 @@ class MyTasks extends Page {
     get taskOne () {
         return $(`[class*="___1k9q2mx"]:nth-of-type(1)`);
     }
+    get billable () {
+        return $(`[type="button"][name="billable"]`);
+    }
+    get billableF () {
+        return $(`[aria-pressed="false"]`);
+    }
+    get billableT () {
+        return $(`[aria-pressed="true"]`);
+    }
+    get closeBtn () {
+        return $(`[aria-label="Close"]`);
+    }
+    get completeBtn () {
+        return $(`[aria-label="Complete"]`);
+    }
+    get editBtn () {
+        return $(`[aria-label="Edit"]`);
+    }
+    get startBtn () {
+        return $(`[aria-label="Start Timer"]`);
+    }
+    get stopBtn () {
+        return $(`[data-testid="timercontrol-stop-timer-button"]`);
+    }
+    get addTime () {
+        return $(`[aria-label="Add Time"]`);
+    }
+    get addTimeWindow () {
+        return $(`[class="fui-DialogSurface r1u3t6p6"]`);
+    }
+    get addTimeCancel () {
+        return $(`[data-testid="add-timeentry-fortask-cancel-button"]`);
+    }
     async failMsg () {
         await this.milestoneMenu.click();
         console.log(`This Case does not have any milestones`);
