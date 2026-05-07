@@ -108,19 +108,19 @@ describe('My Cases Table Testing', () => {
     })
     it('will test what happens to the table when you input certain queries', async () => { // I might skip this one due to time constraints
         await expect(SearchBar.searchInput).toBeDisplayed();
-        await SearchBar.searchInput.setValue(` `);
+        await SearchBar.searchInput.setValue(` `); // Testing how a single space affects the search bar
 
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveValue();
         
-        await SearchBar.boundarySearch();
+        await SearchBar.boundarySearch(); // Returning results using the longest possible case name
         await expect(MyCases.case1).toBeDisplayed();
         await expect(MyCases.case2).not.toBeDisplayed();
 
         await SearchBar.searchClear();
         await expect(SearchBar.searchInput).not.toHaveText();
 
-        await SearchBar.boundarySearchN();
+        await SearchBar.boundarySearchN(); // Expecting no results to return because we go over the case name limit
         await expect(MyCases.case1).not.toBeDisplayed();
     })
 })

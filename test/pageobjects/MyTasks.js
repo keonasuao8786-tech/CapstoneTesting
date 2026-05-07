@@ -30,21 +30,41 @@ class MyTasks extends Page {
         return $(`[class*="fui-Dropdown ___11d5zms"]>[class*="fui-Dropdown__button"]>[class*="___loo0yx0"]>[class*="fui-Text"]`);
     }
     get milestoneMenu () {
-        return $(`[data-testid="milestone-dropdown-menu"]`)
+        return $(`[data-testid="milestone-dropdown-menu"]`);
     }
     get dueBy () {
         return $(`[data-testid="task-dialog-dueby-checkbox"]`);
     }
     get dateSelect () {
-        return $(`[id="datePicker-inputr21e"]`);
+        return $(`[data-testid="task-dialog-datepicker"]`);
+    }
+    get calendar () {
+        return $(`[class*="fui-CalendarDay ___1tvjfjv"]`);
+    }
+    get today () {
+        return $(`[class*="fui-CalendarDayGrid__dayTodayMarker"]`);
+    }
+    get dateAdj () {
+        return $(`[class*="fui-CalendarDayGrid__dayCell fui-CalendarDayGrid__weekDayLabelCell"]:nth-of-type(1)`);
+    }
+    get datecolumn1 () {
+        return $(`[class*="fui-CalendarDayGrid__weekRow"]>[class*="fui-CalendarDayGrid__bottomRightCornerDate ___1klierx"]:nth-of-type(7)>[class*="fui-CalendarDayGrid__dayButton"]`)
+    }
+    get saveBtn () {
+        return $(`[type="submit"]`)
+    }
+    get taskOne () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(1)`);
     }
     async failMsg () {
         await this.milestoneMenu.click();
         console.log(`This Case does not have any milestones`);
+        await this.cancelButton.click();
     }
-    async finishTaskCrtn () {
-        await this.textBox.setValue(`This is a test task; do NOT delete unless prompted`);
+    async testDesc () {
+        await this.textBox.setValue(this.desc);
     }
+    desc = (`This is a test task; do NOT delete unless prompted`);
 }
 
 export default new MyTasks();
