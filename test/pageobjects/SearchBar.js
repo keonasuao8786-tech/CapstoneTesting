@@ -50,6 +50,11 @@ class SearchBar extends Page {
 
         await this.searchInput.setValue(name);
     }
+    async boundarySearchN () {
+        const nCase = await MyCases.case1.getText();
+
+        await this.searchInput.setValue(nCase + `E`);
+    }
 }
 
 export default new SearchBar();
