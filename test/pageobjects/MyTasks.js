@@ -65,23 +65,41 @@ class MyTasks extends Page {
     get billableT () {
         return $(`[aria-pressed="true"]`);
     }
-    get closeBtn () {
-        return $(`[aria-label="Close"]`);
+    get closeBtnA () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(1) [aria-label="Close"]`);
     }
-    get completeBtn () {
-        return $(`[aria-label="Complete"]`);
+    get closeBtnB () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Close"]`);
     }
-    get editBtn () {
-        return $(`[aria-label="Edit"]`);
+    get completeBtnA () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(1) [aria-label="Complete"]`);
     }
-    get startBtn () {
-        return $(`[aria-label="Start Timer"]`);
+    get completeBtnB () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Complete"]`);
     }
-    get stopBtn () {
-        return $(`[data-testid="timercontrol-stop-timer-button"]`);
+    get editBtnA () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(1) [aria-label="Edit"]`);
     }
-    get addTime () {
-        return $(`[aria-label="Add Time"]`);
+    get editBtnB () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Edit"]`);
+    }
+    get startBtnA () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(1) [aria-label="Start Timer"]`);
+    }
+    get startBtnB () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Start Timer"]`);
+    }
+    get stopBtnA () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(1) [data-testid="timercontrol-stop-timer-button"]`);
+    }
+    get stopBtnB () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(2) [data-testid="timercontrol-stop-timer-button"]`);
+    }
+    get addTimeA () {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(1) [aria-label="Add Time"]`);
+    }
+    get addTimeB() {
+        return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Add Time"]`);
     }
     get addTimeWindow () {
         return $(`[class="fui-DialogSurface r1u3t6p6"]`);
