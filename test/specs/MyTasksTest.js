@@ -18,6 +18,9 @@ describe('My Tasks Table Testing', () => {
         // await MyTasks.addTaskWindow.waitForDisplayed();
         // await expect(MyTasks.addTaskWindow).toBeDisplayed();
 
+        // await MyTasks.testTitle();
+        // await expect(MyTasks.title).toHaveValue(MyTasks.titleV);
+
         // await MyTasks.caseDropdown.click();
         // await MyTasks.listMenu.waitForDisplayed();
         // await expect(MyTasks.listMenu).toBeDisplayed();
@@ -25,6 +28,8 @@ describe('My Tasks Table Testing', () => {
         // await MyTasks.optionOne.waitForDisplayed(true);
         // await MyTasks.optionOne.click();
         // await expect(MyTasks.listMenu).not.toBeDisplayed();
+        // await MyTasks.milestoneMenu.waitForDisplayed();
+        // await expect(MyTasks.milestoneMenu).toBeDisplayed();
 
         // await MyTasks.milestoneMenu.click();
         // await MyTasks.listMenu.waitForDisplayed();
@@ -41,9 +46,6 @@ describe('My Tasks Table Testing', () => {
         //     await MyTasks.testDesc();
         //     await expect(MyTasks.textBox).toHaveValue(MyTasks.desc);
 
-        //     await MyTasks.dueBy.click();
-        //     await MyTasks.dateSelect.waitForDisplayed();
-        //     await expect(MyTasks.dateSelect).toBeDisplayed();
         //     await MyTasks.dateSelect.click();
         //     await expect(MyTasks.calendar).toBeDisplayed();
         //     await expect(MyTasks.today).toBeDisplayed();
@@ -68,6 +70,9 @@ describe('My Tasks Table Testing', () => {
         // await MyTasks.addTaskWindow.waitForDisplayed();
         // await expect(MyTasks.addTaskWindow).toBeDisplayed();
 
+        // await MyTasks.testTitle();
+        // await expect(MyTasks.title).toHaveValue(MyTasks.titleV);
+
         // await MyTasks.caseDropdown.click();
         // await MyTasks.listMenu.waitForDisplayed();
         // await expect(MyTasks.listMenu).toBeDisplayed();
@@ -86,15 +91,21 @@ describe('My Tasks Table Testing', () => {
         //     await expect(MyTasks.listMenu).not.toBeDisplayed();
         //     await expect(MyTasks.listMenu).not.toBeDisplayed();
 
+        //     await expect(MyTasks.billableF).toExist();
+
         //     await MyTasks.testDesc2();
         //     await expect(MyTasks.textBox).toHaveValue(MyTasks.desc2);
+
+        //     await MyTasks.inputFill()
+        //     await expect(MyTasks.category).toHaveValue(MyTasks.testCategory);
+        //     await expect(MyTasks.estHours).toHaveValue(MyTasks.testHours);
 
         //     await expect(MyTasks.saveBtn).toBeClickable();
         //     await MyTasks.saveBtn.click();
 
         //     await expect(MyTasks.addTaskWindow).not.toBeDisplayed();
-        //     await MyTasks.taskOne.waitForDisplayed();
-        //     await expect(MyTasks.taskOne).toExist();
+            // await MyTasks.taskTwo.waitForDisplayed();
+            // await expect(MyTasks.taskTwo).toExist();
         // } else {
         //     await MyTasks.failMsg();
         //     await expect(MyTasks.addTaskWindow).not.toBeDisplayed();
@@ -120,6 +131,16 @@ describe('My Tasks Table Testing', () => {
         await expect(MyTasks.addTimeCancel).toBeDisplayed();
         await MyTasks.addTimeCancel.click();
         await expect(MyTasks.addTimeWindow).not.toBeDisplayed();
+
+        await MyTasks.taskTwo.moveTo();
+        await expect(MyTasks.completeBtnB).toBeDisplayed();
+        await MyTasks.completeBtnB.click();
+        await expect(MyTasks.taskTwo).not.toExist();
+
+        await MyTasks.taskOne.moveTo();
+        await expect(MyTasks.closeBtnA).toBeDisplayed();
+        await MyTasks.closeBtnA.click();
+        await expect(MyTasks.taskOne).not.toExist();
     })
 })
 
