@@ -139,6 +139,8 @@ class MyTasks extends Page {
     async testTitle () {
         await this.addTaskWindow.waitForDisplayed();
         await this.title.waitForStable();
+        await this.title.waitForStable();
+        await this.title.waitForStable();
         await this.title.setValue(this.titleV);
     }
     async testDesc () {
