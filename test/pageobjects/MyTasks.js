@@ -2,6 +2,12 @@ import { $, expect } from '@wdio/globals'
 import Page from './CaseWork.js';
 
 class MyTasks extends Page {
+    get filterCase () {
+        return $(`[data-testid="tasks-card-case-filter-dropdown"]`);
+    }
+    get sortCreation () {
+        return $(`[data-testid="tasks-card-sort-dropdown"]`);
+    }
     get addTask () {
         return $(`[class*="fui-Label"]>[class*="fui-Button r1f29ykk"]`);
     }

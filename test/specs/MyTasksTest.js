@@ -159,6 +159,10 @@ describe('My Tasks Table Testing', () => {
     // })
     it(`should filter and sort the table using various parameters`, async () => {
         await expect(MyTasks.taskOne).toBeDisplayed();
+        await MyTasks.filterCase.waitForClickable();
+        await MyTasks.sortCreation.waitForClickable();
+        await expect(MyTasks.filterCase).toBeDisplayed();
+        await expect(MyTasks.sortCreation).toBeDisplayed();
     })
     // it('should test the options for each task', async () => {
     //     await MyTasks.taskOne.moveTo();
