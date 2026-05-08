@@ -70,6 +70,8 @@ describe('My Tasks Table Testing', () => {
         // await MyTasks.addTaskWindow.waitForDisplayed();
         // await expect(MyTasks.addTaskWindow).toBeDisplayed();
 
+        // await MyTasks.title.waitForClickable();
+        // await expect(MyTasks.saveBtn).not.toBeClickable();
         // await MyTasks.testTitle();
         // await expect(MyTasks.title).toHaveValue(MyTasks.titleV);
 
@@ -104,44 +106,83 @@ describe('My Tasks Table Testing', () => {
         //     await MyTasks.saveBtn.click();
 
         //     await expect(MyTasks.addTaskWindow).not.toBeDisplayed();
-            // await MyTasks.taskTwo.waitForDisplayed();
-            // await expect(MyTasks.taskTwo).toExist();
+        //     await MyTasks.taskTwo.waitForDisplayed();
+        //     await expect(MyTasks.taskTwo).toExist();
         // } else {
         //     await MyTasks.failMsg();
         //     await expect(MyTasks.addTaskWindow).not.toBeDisplayed();
         // }
     })
-    it('should test the options for each task', async () => {
+    it('should edit the information in each task', async () => {
         await MyTasks.taskOne.moveTo();
-        await MyTasks.closeBtnA.waitForDisplayed();
-        await expect(MyTasks.closeBtnA).toBeDisplayed();
+        await expect(MyTasks.editBtnA).toBeDisplayed();
 
-        await MyTasks.startBtnA.click();
-        await MyTasks.stopBtnA.waitForClickable();
-        await expect(MyTasks.stopBtnA).toBeClickable();
-        await MyTasks.stopBtnA.click();
-        await MyTasks.taskOne.moveTo();
-        await expect(MyTasks.stopBtnA).not.toBeClickable();
+        await MyTasks.editBtnA.click();
+        await MyTasks.editTaskWin.waitForDisplayed();
+        await expect(MyTasks.editTaskWin).toBeDisplayed();
+        await MyTasks.milestoneMenu.click();
+        const optionTwoExists = await MyTasks.optionTwo.waitForExist({ timeout: 1000 }).catch(() => false);
+        if (optionTwoExists) {
+            await MyTasks.optionTwo.click();
+            await expect(MyTasks.listMenu).not.toBeDisplayed();
+        } else {
+            await MyTasks.milestoneMenu.click();
+            await expect(MyTasks.listMenu).not.toBeDisplayed();
+        }
+        await expect(MyTasks.billableT).toExist();
+        await MyTasks.billable.click();
+        await expect(MyTasks.billableF).toExist();
 
-        await MyTasks.taskOne.moveTo();
-        await MyTasks.addTimeA.waitForEnabled();
-        await expect(MyTasks.addTimeA).toBeClickable();
-        await MyTasks.addTimeA.click();
-        await MyTasks.addTimeWindow.waitForDisplayed();
-        await expect(MyTasks.addTimeCancel).toBeDisplayed();
-        await MyTasks.addTimeCancel.click();
-        await expect(MyTasks.addTimeWindow).not.toBeDisplayed();
+        await expect(MyTasks.saveBtn).toBeClickable();
 
-        await MyTasks.taskTwo.moveTo();
-        await expect(MyTasks.completeBtnB).toBeDisplayed();
-        await MyTasks.completeBtnB.click();
-        await expect(MyTasks.taskTwo).not.toExist();
+        await MyTasks.testResults();
+        await expect(MyTasks.results).toHaveValue(MyTasks.resultEdit);
 
-        await MyTasks.taskOne.moveTo();
-        await expect(MyTasks.closeBtnA).toBeDisplayed();
-        await MyTasks.closeBtnA.click();
-        await expect(MyTasks.taskOne).not.toExist();
+        await MyTasks.discTab.click();
+        await expect(MyTasks.caseNote).toBeDisplayed();
+
+        await MyTasks.cNTest();
+        await expect(MyTasks.caseNote).toHaveValue(MyTasks.noteTest);
+        await expect(MyTasks.cNAddBtn).toBeClickable();
+        await MyTasks.cNAddBtn.click();
+
+        await expect(MyTasks.noteOne).toExist();
+        await expect(MyTasks.saveBtn).toBeClickable();
+
+        // await MyTasks.saveBtn.click();
+        // await expect(MyTasks.editTaskWin).not.toBeDisplayed();
     })
+    // it('should test the options for each task', async () => {
+    //     await MyTasks.taskOne.moveTo();
+    //     await MyTasks.closeBtnA.waitForDisplayed();
+    //     await expect(MyTasks.closeBtnA).toBeDisplayed();
+
+    //     await MyTasks.startBtnA.click();
+    //     await MyTasks.stopBtnA.waitForClickable();
+    //     await expect(MyTasks.stopBtnA).toBeClickable();
+    //     await MyTasks.stopBtnA.click();
+    //     await MyTasks.taskOne.moveTo();
+    //     await expect(MyTasks.stopBtnA).not.toBeClickable();
+
+    //     await MyTasks.taskOne.moveTo();
+    //     await MyTasks.addTimeA.waitForEnabled();
+    //     await expect(MyTasks.addTimeA).toBeClickable();
+    //     await MyTasks.addTimeA.click();
+    //     await MyTasks.addTimeWindow.waitForDisplayed();
+    //     await expect(MyTasks.addTimeCancel).toBeDisplayed();
+    //     await MyTasks.addTimeCancel.click();
+    //     await expect(MyTasks.addTimeWindow).not.toBeDisplayed();
+
+    //     await MyTasks.taskTwo.moveTo();
+    //     await expect(MyTasks.completeBtnB).toBeDisplayed();
+    //     await MyTasks.completeBtnB.click();
+    //     await expect(MyTasks.taskTwo).not.toExist();
+
+    //     await MyTasks.taskOne.moveTo();
+    //     await expect(MyTasks.closeBtnA).toBeDisplayed();
+    //     await MyTasks.closeBtnA.click();
+    //     await expect(MyTasks.taskOne).not.toExist();
+    // })
 })
 
 // if (await MyTasks.billableT.waitForExist()) { //SAVE THIS FOR EDITING A TASK

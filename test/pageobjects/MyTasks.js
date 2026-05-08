@@ -36,7 +36,7 @@ class MyTasks extends Page {
         return $(`[data-testid="case-note-add-button"]`);
     }
     get noteOne () {
-        return $(`[[class*="___vijv6g0"]:nth-of-type(1)]`);
+        return $(`[class*="___vijv6g0"]:nth-of-type(1)`);
     }
     get cancelButton () {
         return $(`[class*="fui-Button"][data-testid="task-dialog-cancel-button"]`);
@@ -49,6 +49,9 @@ class MyTasks extends Page {
     }
     get optionOne () {
         return $('[role="option"]:nth-of-type(1)');
+    }
+    get optionTwo () {
+        return $('[role="option"]:nth-of-type(2)');
     }
     get milestoneMenu () {
         return $(`[data-testid="milestone-dropdown-menu"]`);
@@ -101,6 +104,9 @@ class MyTasks extends Page {
     get editBtnB () {
         return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Edit"]`);
     }
+    get editTaskWin () {
+        return $(`[class*="fui-DialogSurface r1u3t6p6"]`);
+    }
     get startBtnA () {
         return $(`[class*="___1k9q2mx"]:nth-of-type(1) [aria-label="Start Timer"]`);
     }
@@ -131,6 +137,8 @@ class MyTasks extends Page {
         await this.cancelButton.click();
     }
     async testTitle () {
+        await this.addTaskWindow.waitForDisplayed();
+        await this.title.waitForStable();
         await this.title.setValue(this.titleV);
     }
     async testDesc () {
@@ -143,11 +151,19 @@ class MyTasks extends Page {
         await this.category.setValue(this.testCategory);
         await this.estHours.setValue(this.testHours);
     }
+    async testResults () {
+        await this.results.setValue(this.resultEdit);
+    }
+    async cNTest () {
+        await this.caseNote.setValue(this.noteTest);
+    }
     titleV = (`Test Task(Do not delete)`);
     desc = (`This is a test task; do NOT delete unless prompted`);
     desc2 = (`This is a test non-billable task; do NOT delete unless prompted`);
     testCategory = (`Testing`);
     testHours = (`12`);
+    resultEdit = (`This test was successful`);
+    noteTest = (`The case note test was successful`);
 
 }
 
