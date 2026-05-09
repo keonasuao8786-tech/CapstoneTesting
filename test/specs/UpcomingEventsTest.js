@@ -11,7 +11,16 @@ describe('Upcoming Events Table Testing', () => {
         await expect(CaseLogin.username).toExist();
         
         await CaseLogin.login();
+        await UpCEvents.timeSpan.waitForExist();
+        await expect(UpCEvents.timeSpan).toExist();
+
         await UpCEvents.eventOne.waitForExist();
-        await expect(UpCEvents.eventOne).toExist();
+        await UpCEvents.eventOne.moveTo();
+        await UpCEvents.editEOne.waitForDisplayed();
+        await expect(UpCEvents.editEOne).toBeDisplayed();
+        
+        await UpCEvents.editEOne.click();
+        await UpCEvents.editEvent.waitForDisplayed();
+        await expect(UpCEvents.editEvent).toBeDisplayed();
     })
 })
