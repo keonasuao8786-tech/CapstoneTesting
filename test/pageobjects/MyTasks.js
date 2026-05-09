@@ -140,6 +140,9 @@ class MyTasks extends Page {
     get addTimeCancel () {
         return $(`[data-testid="add-timeentry-fortask-cancel-button"]`);
     }
+    get popUpNotif () {
+        return $(`[class*="fui-Link ___52mpgl0"]`);
+    }
     async failMsg () {
         await this.milestoneMenu.click();
         console.log(`This Case does not have any milestones`);

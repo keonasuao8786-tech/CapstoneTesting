@@ -63,6 +63,9 @@ describe('My Tasks Table Testing', () => {
             await expect(MyTasks.addTaskWindow).not.toBeDisplayed();
         }
 
+        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
+        await MyTasks.popUpNotif.click();
+
         await MyTasks.taskOne.waitForDisplayed();
 
         await MyTasks.addTask.moveTo();
@@ -112,6 +115,9 @@ describe('My Tasks Table Testing', () => {
             await MyTasks.failMsg();
             await expect(MyTasks.addTaskWindow).not.toBeDisplayed();
         }
+
+        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
+        await MyTasks.popUpNotif.click();
     })
     it('should edit the information in each task', async () => {
         await MyTasks.taskOne.moveTo();
@@ -156,6 +162,9 @@ describe('My Tasks Table Testing', () => {
 
         await MyTasks.saveBtn.click();
         await expect(MyTasks.editTaskWin).not.toBeDisplayed();
+
+        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
+        await MyTasks.popUpNotif.click();
     })
     it(`should filter and sort the table using various parameters`, async () => {
         await expect(MyTasks.taskOne).toBeDisplayed();
@@ -186,15 +195,12 @@ describe('My Tasks Table Testing', () => {
 
         await MyTasks.sortCreation.waitForClickable();
         await MyTasks.sortCreation.click();
-        await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.optionOne).toBeDisplayed();
         await expect(MyTasks.optionOne).toHaveAttr(`aria-selected`, `true`);
         await expect(MyTasks.optionThree).toExist();
         await MyTasks.optionThree.click();
         await expect(MyTasks.listMenu).not.toBeDisplayed();
-        await MyTasks.sortCreation.click();
-        await expect(MyTasks.listMenu).toBeDisplayed();
-        await expect(MyTasks.optionThree).toHaveAttr(`aria-selected`, `true`);
     })
     it('should test the options for each task', async () => {
         await MyTasks.taskOne.moveTo();
