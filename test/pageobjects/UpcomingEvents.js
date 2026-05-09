@@ -20,6 +20,30 @@ class UpCEvents extends Page {
     get editEvent () {
         return $(`[class*="fui-DialogSurface r1u3t6p6"]`);
     }
+    get eventDate () {
+        return $(`[data-testid="event-date-picker"]`);
+    }
+    get mayDate () {
+        return $(`button[aria-label="16, May, 2026"]`);
+    }
+    get eventTitle () {
+        return $(`[data-testid="event-input"]`);
+    }
+    get eventDesc () {
+        return $(`[data-testid="event-description-textarea"]`);
+    }
+    get descHidden () {
+        return $(`[class*="___1k3u5ge"]:nth-of-type(1)>[class*="pressed"]>[class*="fui-Text"]`);
+    }
+    get eventSave () {
+        return $(`[data-testid="event-save-button"]`);
+    }
+    async titleChange () {
+        await this.eventTitle.setValue("Edited Task Version 1")
+    }
+    async descChange () {
+        await this.eventDesc.setValue('This event has been edited')
+    }
 }
 
 export default new UpCEvents();

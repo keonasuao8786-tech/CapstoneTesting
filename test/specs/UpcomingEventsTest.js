@@ -18,9 +18,32 @@ describe('Upcoming Events Table Testing', () => {
         await UpCEvents.eventOne.moveTo();
         await UpCEvents.editEOne.waitForDisplayed();
         await expect(UpCEvents.editEOne).toBeDisplayed();
-        
+
         await UpCEvents.editEOne.click();
         await UpCEvents.editEvent.waitForDisplayed();
         await expect(UpCEvents.editEvent).toBeDisplayed();
+
+        await UpCEvents.titleChange();
+        await expect(UpCEvents.eventSave).toBeClickable();
+
+        await UpCEvents.eventDate.waitForClickable();
+        await UpCEvents.eventDate.click();
+        await expect(MyTasks.today).toBeDisplayed();
+        await expect(UpCEvents.mayDate).toExist();
+        await UpCEvents.mayDate.click();
+        await expect(UpCEvents.mayDate).not.toBeDisplayed();
+
+        await UpCEvents.eventDesc.waitForClickable();
+        await UpCEvents.descChange();
+        const text = UpCEvents.eventDesc.getText();
+        await expect(UpCEvents.eventSave).toBeClickable();
+
+        await UpCEvents.eventSave.click();
+        await expect(UpCEvents.editEvent).not.toBeDisplayed();
+
+        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
+        await browser.refresh();
+
+        await UpCEvents.eventOne.waitForDisplayed();
     })
 })
