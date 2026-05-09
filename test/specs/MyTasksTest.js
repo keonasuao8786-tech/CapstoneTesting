@@ -163,6 +163,33 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.sortCreation.waitForClickable();
         await expect(MyTasks.filterCase).toBeDisplayed();
         await expect(MyTasks.sortCreation).toBeDisplayed();
+
+        await MyTasks.filterCase.click();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+        await expect(MyTasks.optionOne).toHaveAttr(`aria-selected`, `true`);
+
+        await MyTasks.optionTwo.click();
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+        await MyTasks.filterCase.click();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+        await expect(MyTasks.optionTwo).toHaveAttr(`aria-selected`, `true`);
+
+        await expect(MyTasks.optionThree).toExist();
+        await MyTasks.optionThree.click();
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+        await expect(MyTasks.taskOne).not.toBeDisplayed();
+
+        await MyTasks.filterCase.click();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+        await expect(MyTasks.optionOne).toBeDisplayed();
+        await MyTasks.optionOne.click();
+
+        await MyTasks.sortCreation.waitForClickable();
+        await MyTasks.sortCreation.click();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+        await expect(MyTasks.optionOne).toBeDisplayed();
+        await expect(MyTasks.optionOne).toHaveAttr(`aria-selected`, `true`);
+        
     })
     // it('should test the options for each task', async () => {
     //     await MyTasks.taskOne.moveTo();
