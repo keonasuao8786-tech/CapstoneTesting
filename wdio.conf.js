@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 export const config = {
     //
     // ====================
@@ -21,7 +24,7 @@ export const config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.js'
+        // ToDo: define location for spec files here
     ],
     // Patterns to exclude.
     exclude: [
