@@ -5,6 +5,9 @@ class UpCEvents extends Page {
     get eventOne () {
         return $(`[class*="___1k3u5ge"]:nth-of-type(1)`);
     }
+    get eTitleOne () {
+        return $('[class*="___1k3u5ge"]:first-of-type>[class*="___vjugq20"]>[class*="___pg79c70"]>[class*="fui-Text"]');
+    }
     get eventTwo () {
         return $(`[class*="___1k3u5ge"]:nth-of-type(2)`);
     }
@@ -16,6 +19,18 @@ class UpCEvents extends Page {
     }
     get editEOne () {
         return $(`[class*="___1k3u5ge"]:nth-of-type(1)>[style="min-height: fit-content;"]>[style="scrollbar-width: thin; overflow-x: clip;"]>[style="width: auto; min-height: fit-content;"]>[aria-label="Edit"]>[class="fui-Button__icon rywnvv2"]`);
+    }
+    get deleteEOne () {
+        return $('[class*="___1k3u5ge"]:nth-of-type(1)>[class*="___vjugq20"]>[class*="___1h9lpw9"]>[class*="hidden"]>[aria-label="Delete"]');
+    }
+    get deleteWindow () {
+        return $('[class="fui-DialogSurface r1u3t6p6"]');
+    }
+    get deleteYes () {
+        return $('[data-testid="confirmation-dialog-confirm-button"]');
+    }
+    get deleteNo () {
+        return $('[data-testid="confirmation-dialog-cancel-button"]');
     }
     get editEvent () {
         return $(`[class*="fui-DialogSurface r1u3t6p6"]`);
@@ -36,7 +51,7 @@ class UpCEvents extends Page {
         return $(`[data-testid="event-description-textarea"]`);
     }
     get descHidden () {
-        return $(`[class*="___1k3u5ge"]:nth-of-type(1)>[class*="pressed"]>[class*="fui-Text"]`);
+        return $(`[class*="___1k3u5ge"]:nth-of-type(1)>[class*="pressed"]`);
     }
     get eventSave () {
         return $(`[data-testid="event-save-button"]`);

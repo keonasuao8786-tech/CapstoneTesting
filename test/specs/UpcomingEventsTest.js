@@ -87,7 +87,27 @@ describe('Upcoming Events Table Testing', () => {
     //     await UpCEvents.editEvent.waitForDisplayed({ timeout: 1000 }).catch(() => false)
     //     await expect(UpCEvents.editEvent).not.toBeDisplayed();
     // })
-    it('should check the event description and delete the events from the table', async () => {
+    it('should delete the events from the table', async () => {
         await UpCEvents.eventOne.waitForExist();
+
+        await UpCEvents.eventOne.moveTo();
+        await expect(UpCEvents.deleteEOne).toBeDisplayed();
+        await UpCEvents.deleteEOne.click();
+        await UpCEvents.deleteWindow.waitForDisplayed();
+        await expect(UpCEvents.deleteWindow).toBeDisplayed();
+        await UpCEvents.deleteNo.waitForClickable();
+        await expect(UpCEvents.deleteNo).toBeClickable();
+        await UpCEvents.deleteNo.click();
+        await expect(UpCEvents.deleteWindow).not.toBeDisplayed();
+        
+        await UpCEvents.eventOne.moveTo();
+        await expect(UpCEvents.deleteEOne).toBeDisplayed();
+        await UpCEvents.deleteEOne.click();
+        await UpCEvents.deleteWindow.waitForDisplayed();
+        await expect(UpCEvents.deleteWindow).toBeDisplayed();
+        await UpCEvents.deleteYes.waitForClickable();
+        await expect(UpCEvents.deleteYes).toBeClickable();
+        await UpCEvents.deleteYes.click();
+        await expect(UpCEvents.deleteWindow).not.toBeDisplayed();
     })
 })
