@@ -5,3 +5,4 @@ export default class Page {
         return browser.url(`https://app.thecasework.com/`)
     }
 }
+ 
