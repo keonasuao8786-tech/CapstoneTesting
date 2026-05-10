@@ -29,6 +29,9 @@ class UpCEvents extends Page {
     get eventTitle () {
         return $(`[data-testid="event-input"]`);
     }
+    get errorMsg () {
+        return $(`[role="alert"]>[class*="fui-Field__validationMessageIcon"]`);
+    }
     get eventDesc () {
         return $(`[data-testid="event-description-textarea"]`);
     }
@@ -38,12 +41,35 @@ class UpCEvents extends Page {
     get eventSave () {
         return $(`[data-testid="event-save-button"]`);
     }
+    get eventCancel () {
+        return $('[data-testid="event-cancel-button"]');
+    }
     async titleChange () {
         await this.eventTitle.setValue("Edited Task Version 1")
+    }
+    async titleChange2 () {
+        await this.eventTitle.setValue(this.maxTitle)
+    }
+    async titleChangeN () {
+        await this.eventTitle.setValue("/")
+    }
+    async titleN2 () {
+        await this.eventTitle.setValue(this.maxTitle + "1");
     }
     async descChange () {
         await this.eventDesc.setValue('This event has been edited')
     }
+    async descChange2 () {
+        await this.eventDesc.clearValue();
+        await this.eventDesc.setValue(this.maxText);
+    }
+    async descBoundary () {
+        await this.eventDesc.clearValue();
+        await expect(this.eventDesc).not.toHaveValue(this.maxText);
+        await this.eventDesc.setValue(this.maxText + "1");
+    }
+    maxTitle = ('1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890');
+    maxText = ('12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890');
 }
 
 export default new UpCEvents();
