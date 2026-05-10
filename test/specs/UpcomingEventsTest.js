@@ -114,4 +114,7 @@ describe('Upcoming Events Table Testing', () => {
         await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
         await expect(UpCEvents.deleteWindow).not.toBeDisplayed();
     })
+    it('should test the filters in the table', async () => {
+        await UpCEvents.eventOne.waitForDisplayed();
+    })
 })
