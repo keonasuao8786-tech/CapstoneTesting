@@ -99,7 +99,7 @@ describe('Upcoming Events Table Testing', () => {
         await expect(UpCEvents.deleteNo).toBeClickable();
         await UpCEvents.deleteNo.click();
         await expect(UpCEvents.deleteWindow).not.toBeDisplayed();
-        
+
         await UpCEvents.eventOne.moveTo();
         await expect(UpCEvents.deleteEOne).toBeDisplayed();
         await UpCEvents.deleteEOne.click();
@@ -108,6 +108,10 @@ describe('Upcoming Events Table Testing', () => {
         await UpCEvents.deleteYes.waitForClickable();
         await expect(UpCEvents.deleteYes).toBeClickable();
         await UpCEvents.deleteYes.click();
+
+        await MyTasks.popUpNotif.waitForDisplayed();
+        await MyTasks.popUpNotif.click();
+        await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
         await expect(UpCEvents.deleteWindow).not.toBeDisplayed();
     })
 })
