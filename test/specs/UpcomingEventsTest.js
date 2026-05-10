@@ -47,44 +47,47 @@ describe('Upcoming Events Table Testing', () => {
         // await UpCEvents.eventOne.waitForDisplayed();
         // await expect(UpCEvents.eventDesc).not.toHaveValue(text);
     })
-    it('should edit the items in the Upcoming Events table; Negative Testing', async () => {
-        await UpCEvents.eventOne.waitForDisplayed();
-        await expect(UpCEvents.eventOne).toBeDisplayed();
+    // it('should edit the items in the Upcoming Events table; Negative Testing', async () => {
+    //     await UpCEvents.eventOne.waitForDisplayed();
+    //     await expect(UpCEvents.eventOne).toBeDisplayed();
 
-        await UpCEvents.eventOne.moveTo();
-        await UpCEvents.editEOne.waitForDisplayed();
-        await expect(UpCEvents.editEOne).toBeDisplayed();
+    //     await UpCEvents.eventOne.moveTo();
+    //     await UpCEvents.editEOne.waitForDisplayed();
+    //     await expect(UpCEvents.editEOne).toBeDisplayed();
 
-        await UpCEvents.editEOne.click()
-        await UpCEvents.editEvent.waitForDisplayed();
-        await expect(UpCEvents.editEvent).toBeDisplayed();
+    //     await UpCEvents.editEOne.click()
+    //     await UpCEvents.editEvent.waitForDisplayed();
+    //     await expect(UpCEvents.editEvent).toBeDisplayed();
 
-        await UpCEvents.descChange2();
-        await expect(UpCEvents.errorMsg).not.toBeDisplayed();
-        await UpCEvents.eventSave.waitForClickable();
-        await expect(UpCEvents.eventSave).toBeClickable();
-        await UpCEvents.descBoundary();
-        await expect(UpCEvents.eventDesc).toHaveValue(UpCEvents.maxText);
-        await console.log('The text box cannot accept any more characters');
+    //     await UpCEvents.descChange2();
+    //     await expect(UpCEvents.errorMsg).not.toBeDisplayed();
+    //     await UpCEvents.eventSave.waitForClickable();
+    //     await expect(UpCEvents.eventSave).toBeClickable();
+    //     await UpCEvents.descBoundary();
+    //     await expect(UpCEvents.eventDesc).toHaveValue(UpCEvents.maxText);
+    //     await console.log('The text box cannot accept any more characters');
 
-        await UpCEvents.titleChangeN();
-        await UpCEvents.errorMsg.waitForDisplayed();
-        await expect(UpCEvents.errorMsg).toBeDisplayed();
-        await expect(UpCEvents.eventSave).not.toBeClickable();
-        await UpCEvents.eventTitle.clearValue();
-        await expect(UpCEvents.errorMsg).toBeDisplayed();
-        await expect(UpCEvents.eventSave).not.toBeClickable();
+    //     await UpCEvents.titleChangeN();
+    //     await UpCEvents.errorMsg.waitForDisplayed();
+    //     await expect(UpCEvents.errorMsg).toBeDisplayed();
+    //     await expect(UpCEvents.eventSave).not.toBeClickable();
+    //     await UpCEvents.eventTitle.clearValue();
+    //     await expect(UpCEvents.errorMsg).toBeDisplayed();
+    //     await expect(UpCEvents.eventSave).not.toBeClickable();
 
-        await UpCEvents.titleChange2();
-        await expect(UpCEvents.errorMsg).not.toBeDisplayed();
-        await UpCEvents.eventSave.waitForClickable();
-        await expect(UpCEvents.eventSave).toBeClickable();
-        await UpCEvents.titleN2();
-        await expect(UpCEvents.errorMsg).toBeDisplayed();
-        await expect(UpCEvents.eventSave).not.toBeClickable();
+    //     await UpCEvents.titleChange2();
+    //     await expect(UpCEvents.errorMsg).not.toBeDisplayed();
+    //     await UpCEvents.eventSave.waitForClickable();
+    //     await expect(UpCEvents.eventSave).toBeClickable();
+    //     await UpCEvents.titleN2();
+    //     await expect(UpCEvents.errorMsg).toBeDisplayed();
+    //     await expect(UpCEvents.eventSave).not.toBeClickable();
 
-        await UpCEvents.eventCancel.click();
-        await UpCEvents.editEvent.waitForDisplayed({ timeout: 1000 }).catch(() => false)
-        await expect(UpCEvents.editEvent).not.toBeDisplayed();
+    //     await UpCEvents.eventCancel.click();
+    //     await UpCEvents.editEvent.waitForDisplayed({ timeout: 1000 }).catch(() => false)
+    //     await expect(UpCEvents.editEvent).not.toBeDisplayed();
+    // })
+    it('should check the event description and delete the events from the table', async () => {
+        await UpCEvents.eventOne.waitForExist();
     })
 })

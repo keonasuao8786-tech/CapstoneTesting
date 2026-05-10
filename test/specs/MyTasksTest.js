@@ -65,6 +65,7 @@ describe('My Tasks Table Testing', () => {
 
         await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
         await MyTasks.popUpNotif.click();
+        await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
 
         await MyTasks.taskOne.waitForDisplayed();
 
@@ -118,6 +119,7 @@ describe('My Tasks Table Testing', () => {
 
         await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
         await MyTasks.popUpNotif.click();
+        await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
     })
     it('should edit the information in each task', async () => {
         await MyTasks.taskOne.moveTo();
@@ -165,6 +167,7 @@ describe('My Tasks Table Testing', () => {
 
         await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
         await MyTasks.popUpNotif.click();
+        await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
     })
     it(`should filter and sort the table using various parameters`, async () => {
         await expect(MyTasks.taskOne).toBeDisplayed();
