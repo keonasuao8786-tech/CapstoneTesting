@@ -62,7 +62,7 @@ describe('Upcoming Events Table Testing', () => {
         await UpCEvents.eventSave.waitForClickable();
         await expect(UpCEvents.eventSave).toBeClickable();
         await UpCEvents.descBoundary();
-        await expect(UpCEvents.eventDesc).toHaveValue(UpCEvents.maxText);
+        await expect(UpCEvents.textLimit).toHaveValue(UpCEvents.charCount);
         await console.log('The text box cannot accept any more characters');
 
         await UpCEvents.titleChangeN();
