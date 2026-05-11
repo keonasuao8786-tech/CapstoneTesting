@@ -164,20 +164,57 @@ describe('Quick Insights Table Testing', () => {
         await MyTasks.listMenu.waitForDisplayed({ timeout: 1000 }).catch(() => false);
         await expect(MyTasks.listMenu).not.toBeDisplayed();
         await expect(QuickInsights.bTimeMeter).toHaveAttr('aria-valuenow', '50');
+
+        await browser.refresh();
+
+        await QuickInsights.bTimeMeter.waitForStable();
+        await expect(QuickInsights.bTimeMeter).toHaveAttr('aria-valuenow', '0');
+
+        await MyTasks.taskTwo.moveTo();
+        await expect(MyTasks.addTimeB).toBeDisplayed();
+        await MyTasks.addTimeB.click();
+        await MyTasks.addTimeWindow.waitForDisplayed();
+
+        await expect(QuickInsights.timeInput).toBeDisplayed();
+        await QuickInsights.addingTime();
+        await expect(QuickInsights.timeSubmit).toBeClickable();
+
+        await QuickInsights.timeSubmit.click();
+        await MyTasks.addTimeWindow.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.addTimeWindow).not.toBeDisplayed();
+
+        await expect(QuickInsights.timeSpan).toBeDisplayed();
+        await QuickInsights.timeSpan.click();
+        await MyTasks.listMenu.waitForDisplayed();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+
+        await expect(MyTasks.optionTwo).toHaveAttr('aria-selected', 'true');
+        await MyTasks.optionOne.click();
+        await MyTasks.listMenu.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+        await expect(QuickInsights.bTimeMeter).toHaveAttr('aria-valuenow', '0');
     })
     it('should test the filters in the Quick Insights table', async () => {
         await expect(QuickInsights.timeSpan).toBeDisplayed();
-        await QuickInsights.timeSpan.click();
-        await expect(MyTasks.optionTwo).toHaveAttr('aria-selected', 'true');
-        await MyTasks.optionOne.click();
-
         await QuickInsights.timeSpan.click();
         await expect(MyTasks.optionOne).toHaveAttr('aria-selected', 'true');
         await MyTasks.optionThree.click();
 
         await QuickInsights.timeSpan.click();
-        await expect(MyTasks.listMenu).toBeDisplayed();
         await expect(MyTasks.optionThree).toHaveAttr('aria-selected', 'true');
+        await MyTasks.optionTwo.click();
+
+        await QuickInsights.timeSpan.click();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+        await expect(MyTasks.optionTwo).toHaveAttr('aria-selected', 'true');
         
+        await expect(QuickInsights.viewMenu).toBeDisplayed();
+        await QuickInsights.viewMenu.click();
+        await expect(MyTasks.optionOne).toHaveAttr('aria-selected', 'true');
+        await MyTasks.optionTwo.click();
+
+        await QuickInsights.timeSpan.click();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+        await expect(MyTasks.optionTwo).toHaveAttr('aria-selected', 'true');
     })
 })
