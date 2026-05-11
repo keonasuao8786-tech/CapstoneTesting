@@ -14,79 +14,77 @@ describe('Upcoming Events Table Testing', () => {
         await UpCEvents.timeSpan.waitForExist();
         await expect(UpCEvents.timeSpan).toExist();
 
-        // await UpCEvents.eventOne.waitForExist();
-        // await UpCEvents.eventOne.moveTo();
-        // await UpCEvents.editEOne.waitForDisplayed();
-        // await expect(UpCEvents.editEOne).toBeDisplayed();
+        await UpCEvents.eventOne.waitForExist();
+        await UpCEvents.eventOne.moveTo();
+        await UpCEvents.editEOne.waitForDisplayed();
+        await expect(UpCEvents.editEOne).toBeDisplayed();
 
-        // await UpCEvents.editEOne.click();
-        // await UpCEvents.editEvent.waitForDisplayed();
-        // await expect(UpCEvents.editEvent).toBeDisplayed();
+        await UpCEvents.editEOne.click();
+        await UpCEvents.editEvent.waitForDisplayed();
+        await expect(UpCEvents.editEvent).toBeDisplayed();
 
-        // await UpCEvents.titleChange();
-        // await expect(UpCEvents.eventSave).toBeClickable();
+        await UpCEvents.titleChange();
+        await expect(UpCEvents.eventSave).toBeClickable();
 
-        // await UpCEvents.eventDate.waitForClickable();
-        // await UpCEvents.eventDate.click();
-        // await expect(MyTasks.today).toBeDisplayed();
-        // await expect(UpCEvents.mayDate).toExist();
-        // await UpCEvents.mayDate.click();
-        // await expect(UpCEvents.mayDate).not.toBeDisplayed();
+        await UpCEvents.eventDate.waitForClickable();
+        await UpCEvents.eventDate.click();
+        await expect(MyTasks.today).toBeDisplayed();
+        await expect(UpCEvents.mayDate).toExist();
+        await UpCEvents.mayDate.click();
+        await expect(UpCEvents.mayDate).not.toBeDisplayed();
 
-        // await UpCEvents.eventDesc.waitForClickable();
-        // await UpCEvents.descChange();
-        // const text = UpCEvents.eventDesc.getText();
-        // await expect(UpCEvents.eventSave).toBeClickable();
+        await UpCEvents.eventDesc.waitForClickable();
+        await UpCEvents.descChange();
+        await expect(UpCEvents.eventSave).toBeClickable();
 
-        // await UpCEvents.eventSave.click();
-        // await expect(UpCEvents.editEvent).not.toBeDisplayed();
+        await UpCEvents.eventSave.click();
+        await expect(UpCEvents.editEvent).not.toBeDisplayed();
 
-        // await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
-        // await browser.refresh();
+        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
+        await browser.refresh();
 
-        // await UpCEvents.eventOne.waitForDisplayed();
-        // await expect(UpCEvents.eventDesc).not.toHaveValue(text);
+        await UpCEvents.eventOne.waitForDisplayed();
     })
-    // it('should edit the items in the Upcoming Events table; Negative Testing', async () => {
-    //     await UpCEvents.eventOne.waitForDisplayed();
-    //     await expect(UpCEvents.eventOne).toBeDisplayed();
+    it('should edit the items in the Upcoming Events table; Negative Testing', async () => {
+        await UpCEvents.eventOne.waitForDisplayed();
+        await expect(UpCEvents.eventOne).toBeDisplayed();
 
-    //     await UpCEvents.eventOne.moveTo();
-    //     await UpCEvents.editEOne.waitForDisplayed();
-    //     await expect(UpCEvents.editEOne).toBeDisplayed();
+        await UpCEvents.eventOne.moveTo();
+        await UpCEvents.editEOne.waitForDisplayed();
+        await expect(UpCEvents.editEOne).toBeDisplayed();
 
-    //     await UpCEvents.editEOne.click()
-    //     await UpCEvents.editEvent.waitForDisplayed();
-    //     await expect(UpCEvents.editEvent).toBeDisplayed();
+        await UpCEvents.editEOne.click()
+        await UpCEvents.editEvent.waitForDisplayed();
+        await expect(UpCEvents.editEvent).toBeDisplayed();
 
-    //     await UpCEvents.descChange2();
-    //     await expect(UpCEvents.errorMsg).not.toBeDisplayed();
-    //     await UpCEvents.eventSave.waitForClickable();
-    //     await expect(UpCEvents.eventSave).toBeClickable();
-    //     await UpCEvents.descBoundary();
-    //     await expect(UpCEvents.eventDesc).toHaveValue(UpCEvents.maxText);
-    //     await console.log('The text box cannot accept any more characters');
+        await UpCEvents.descChange2();
+        await expect(UpCEvents.errorMsg).not.toBeDisplayed();
+        await UpCEvents.eventSave.waitForClickable();
+        await expect(UpCEvents.eventSave).toBeClickable();
+        await UpCEvents.descBoundary();
+        await expect(UpCEvents.eventDesc).toHaveValue(UpCEvents.maxText);
+        await console.log('The text box cannot accept any more characters');
 
-    //     await UpCEvents.titleChangeN();
-    //     await UpCEvents.errorMsg.waitForDisplayed();
-    //     await expect(UpCEvents.errorMsg).toBeDisplayed();
-    //     await expect(UpCEvents.eventSave).not.toBeClickable();
-    //     await UpCEvents.eventTitle.clearValue();
-    //     await expect(UpCEvents.errorMsg).toBeDisplayed();
-    //     await expect(UpCEvents.eventSave).not.toBeClickable();
+        await UpCEvents.titleChangeN();
+        await UpCEvents.errorMsg.waitForDisplayed();
+        await expect(UpCEvents.errorMsg).toBeDisplayed();
+        await expect(UpCEvents.eventSave).not.toBeClickable();
+        await UpCEvents.eventTitle.clearValue();
+        await expect(UpCEvents.errorMsg).toBeDisplayed();
+        await expect(UpCEvents.eventSave).not.toBeClickable();
 
-    //     await UpCEvents.titleChange2();
-    //     await expect(UpCEvents.errorMsg).not.toBeDisplayed();
-    //     await UpCEvents.eventSave.waitForClickable();
-    //     await expect(UpCEvents.eventSave).toBeClickable();
-    //     await UpCEvents.titleN2();
-    //     await expect(UpCEvents.errorMsg).toBeDisplayed();
-    //     await expect(UpCEvents.eventSave).not.toBeClickable();
+        await UpCEvents.titleChange2();
+        await expect(UpCEvents.errorMsg).not.toBeDisplayed();
+        await UpCEvents.eventSave.waitForClickable();
+        await expect(UpCEvents.eventSave).toBeClickable();
+        await UpCEvents.titleN2();
+        await expect(UpCEvents.errorMsg).toBeDisplayed();
+        await expect(UpCEvents.eventSave).not.toBeClickable();
 
-    //     await UpCEvents.eventCancel.click();
-    //     await UpCEvents.editEvent.waitForDisplayed({ timeout: 1000 }).catch(() => false)
-    //     await expect(UpCEvents.editEvent).not.toBeDisplayed();
-    // })
+        await UpCEvents.eventCancel.click();
+        await UpCEvents.editEvent.waitForDisplayed({ timeout: 1000 }).catch(() => false)
+        await expect(UpCEvents.editEvent).not.toBeDisplayed();
+    })
     it('should delete the events from the table', async () => {
         await UpCEvents.eventOne.waitForExist();
 
@@ -116,5 +114,36 @@ describe('Upcoming Events Table Testing', () => {
     })
     it('should test the filters in the table', async () => {
         await UpCEvents.eventOne.waitForDisplayed();
+        await UpCEvents.timeSpan.click();
+        await MyTasks.listMenu.waitForDisplayed();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+
+        await expect(MyTasks.optionFour).toHaveAttr(`aria-selected`, `true`);
+        await MyTasks.optionOne.waitForExist();
+        await expect(MyTasks.optionOne).toExist();
+        await MyTasks.optionOne.click();
+        await MyTasks.listMenu.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+
+        await UpCEvents.timeSpan.click();
+        await expect(MyTasks.optionOne).toHaveAttr(`aria-selected`, `true`);
+        await MyTasks.optionTwo.click();
+        await MyTasks.listMenu.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+
+        await UpCEvents.timeSpan.click();
+        await expect(MyTasks.optionTwo).toHaveAttr(`aria-selected`, `true`);
+        await MyTasks.optionThree.click();
+        await MyTasks.listMenu.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+
+        await UpCEvents.timeSpan.click();
+        await expect(MyTasks.optionThree).toHaveAttr(`aria-selected`, `true`);
+        await MyTasks.optionFour.click();
+        await MyTasks.listMenu.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+
+        await UpCEvents.timeSpan.click();
+        await expect(MyTasks.optionFour).toHaveAttr(`aria-selected`, `true`);
     })
 })

@@ -62,6 +62,9 @@ class MyTasks extends Page {
     get optionThree () {
         return $('[role="option"]:nth-of-type(3)');
     }
+    get optionFour () {
+        return $('[role="option"]:nth-of-type(4)');
+    }
     get milestoneMenu () {
         return $(`[data-testid="milestone-dropdown-menu"]`);
     }
