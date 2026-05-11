@@ -14,14 +14,14 @@ describe('My Tasks Table Testing', () => {
         await MyCases.case1.waitForExist();
         await expect(MyTasks.addTask).toExist();
 
-        await MyTasks.addTask.click();
+        await MyTasks.addTask.click(); // Opens the Add Task window
         await MyTasks.addTaskWindow.waitForDisplayed();
         await expect(MyTasks.addTaskWindow).toBeDisplayed();
 
-        await MyTasks.testTitle();
+        await MyTasks.testTitle(); // Inputs a title
         await expect(MyTasks.title).toHaveValue(MyTasks.titleV);
 
-        await MyTasks.caseDropdown.click();
+        await MyTasks.caseDropdown.click(); // Chooses a case
         await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.listMenu).toBeDisplayed();
 
@@ -31,7 +31,7 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.milestoneMenu.waitForDisplayed();
         await expect(MyTasks.milestoneMenu).toBeDisplayed();
 
-        await MyTasks.milestoneMenu.click();
+        await MyTasks.milestoneMenu.click(); // Chooses a milestone if the case has one
         await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.listMenu).toBeDisplayed();
         await MyTasks.optionOne.waitForDisplayed();
@@ -63,14 +63,14 @@ describe('My Tasks Table Testing', () => {
             await expect(MyTasks.addTaskWindow).not.toBeDisplayed();
         }
 
-        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
+        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 }); // Waits for a notification confirming case creation appears
         await MyTasks.popUpNotif.click();
         await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
 
         await MyTasks.taskOne.waitForDisplayed();
 
         await MyTasks.addTask.moveTo();
-        await MyTasks.addTask.click();
+        await MyTasks.addTask.click(); // Creates a case that is Non-Billable and has no Due By date
         await MyTasks.addTaskWindow.waitForDisplayed();
         await expect(MyTasks.addTaskWindow).toBeDisplayed();
 
@@ -122,10 +122,10 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
     })
     it('should edit the information in each task', async () => {
-        await MyTasks.taskOne.moveTo();
+        await MyTasks.taskOne.moveTo(); // Moves to the first task and waits for the task options to be displayed
         await expect(MyTasks.editBtnA).toBeDisplayed();
 
-        await MyTasks.editBtnA.click();
+        await MyTasks.editBtnA.click(); // Edits the task
         await MyTasks.editTaskWin.waitForDisplayed();
         await expect(MyTasks.editTaskWin).toBeDisplayed();
         await MyTasks.milestoneMenu.click();
@@ -146,26 +146,26 @@ describe('My Tasks Table Testing', () => {
             await expect(MyTasks.billableT).toExist();
         }
 
-        await expect(MyTasks.saveBtn).toBeClickable();
+        await expect(MyTasks.saveBtn).toBeClickable(); // Waits for the changes to be confirmed valid and saveable
 
-        await MyTasks.testResults();
+        await MyTasks.testResults(); // Inputs results
         await expect(MyTasks.results).toHaveValue(MyTasks.resultEdit);
 
-        await MyTasks.discTab.click();
+        await MyTasks.discTab.click(); // Switches to the Discussion tab
         await expect(MyTasks.caseNote).toBeDisplayed();
 
-        await MyTasks.cNTest();
+        await MyTasks.cNTest(); // Creates a case note
         await expect(MyTasks.caseNote).toHaveValue(MyTasks.noteTest);
-        await expect(MyTasks.cNAddBtn).toBeClickable();
+        await expect(MyTasks.cNAddBtn).toBeClickable(); // Waits for the inputted string to be confirmed valid and saveable
         await MyTasks.cNAddBtn.click();
 
-        await expect(MyTasks.noteOne).toExist();
+        await expect(MyTasks.noteOne).toExist(); // Waits for the note to be displayed on the board
         await expect(MyTasks.saveBtn).toBeClickable();
 
-        await MyTasks.saveBtn.click();
+        await MyTasks.saveBtn.click(); // Saves the changes
         await expect(MyTasks.editTaskWin).not.toBeDisplayed();
 
-        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
+        await MyTasks.popUpNotif.waitForExist({ timeout: 30000 }); // Waits for the confirming notification that the changes were saved
         await MyTasks.popUpNotif.click();
         await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
     })
@@ -176,11 +176,11 @@ describe('My Tasks Table Testing', () => {
         await expect(MyTasks.filterCase).toBeDisplayed();
         await expect(MyTasks.sortCreation).toBeDisplayed();
 
-        await MyTasks.filterCase.click();
+        await MyTasks.filterCase.click(); // Filters the cases by Case Name
         await expect(MyTasks.listMenu).toBeDisplayed();
-        await expect(MyTasks.optionOne).toHaveAttr(`aria-selected`, `true`);
+        await expect(MyTasks.optionOne).toHaveAttr(`aria-selected`, `true`); // Expects the first item in the list menu to be selected
 
-        await MyTasks.optionTwo.click();
+        await MyTasks.optionTwo.click(); // Selects the second option and confirms the second item onward is selected when you click it
         await expect(MyTasks.listMenu).not.toBeDisplayed();
         await MyTasks.filterCase.click();
         await expect(MyTasks.listMenu).toBeDisplayed();
@@ -196,7 +196,7 @@ describe('My Tasks Table Testing', () => {
         await expect(MyTasks.optionOne).toBeDisplayed();
         await MyTasks.optionOne.click();
 
-        await MyTasks.sortCreation.waitForClickable();
+        await MyTasks.sortCreation.waitForClickable(); // Sorts the cases by their creation and due dates in ascending/descending order
         await MyTasks.sortCreation.click();
         await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.optionOne).toBeDisplayed();
@@ -210,14 +210,14 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.closeBtnA.waitForDisplayed();
         await expect(MyTasks.closeBtnA).toBeDisplayed();
 
-        await MyTasks.startBtnA.click();
+        await MyTasks.startBtnA.click(); // Tests the time function for each task
         await MyTasks.stopBtnA.waitForClickable();
         await expect(MyTasks.stopBtnA).toBeClickable();
         await MyTasks.stopBtnA.click();
         await MyTasks.taskOne.moveTo();
         await expect(MyTasks.stopBtnA).not.toBeClickable();
 
-        await MyTasks.taskOne.moveTo();
+        await MyTasks.taskOne.moveTo(); // Tests the Add Time button for each task
         await MyTasks.addTimeA.waitForEnabled();
         await expect(MyTasks.addTimeA).toBeClickable();
         await MyTasks.addTimeA.click();
@@ -226,12 +226,12 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.addTimeCancel.click();
         await expect(MyTasks.addTimeWindow).not.toBeDisplayed();
 
-        await MyTasks.taskTwo.moveTo();
+        await MyTasks.taskTwo.moveTo(); // Tests the Complete Task button
         await expect(MyTasks.completeBtnB).toBeDisplayed();
         await MyTasks.completeBtnB.click();
         await expect(MyTasks.taskTwo).not.toExist();
 
-        await MyTasks.taskOne.moveTo();
+        await MyTasks.taskOne.moveTo(); // Completes the Close Task Without Completing button
         await expect(MyTasks.closeBtnA).toBeDisplayed();
         await MyTasks.closeBtnA.click();
         await expect(MyTasks.taskOne).not.toExist();
