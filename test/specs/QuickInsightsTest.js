@@ -165,4 +165,19 @@ describe('Quick Insights Table Testing', () => {
         await expect(MyTasks.listMenu).not.toBeDisplayed();
         await expect(QuickInsights.bTimeMeter).toHaveAttr('aria-valuenow', '50');
     })
+    it('should test the filters in the Quick Insights table', async () => {
+        await expect(QuickInsights.timeSpan).toBeDisplayed();
+        await QuickInsights.timeSpan.click();
+        await expect(MyTasks.optionTwo).toHaveAttr('aria-selected', 'true');
+        await MyTasks.optionOne.click();
+
+        await QuickInsights.timeSpan.click();
+        await expect(MyTasks.optionOne).toHaveAttr('aria-selected', 'true');
+        await MyTasks.optionThree.click();
+
+        await QuickInsights.timeSpan.click();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+        await expect(MyTasks.optionThree).toHaveAttr('aria-selected', 'true');
+        
+    })
 })
