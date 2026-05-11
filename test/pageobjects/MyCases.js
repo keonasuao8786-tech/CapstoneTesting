@@ -38,7 +38,8 @@ class MyCases extends Page {
     }
     get casePage () {
         return $(`[class*="fui-Title2"]`);
-    }get caseTypeCell () {
+    }
+    get caseTypeCell () {
         return $('[role="row"]:nth-of-type(1)>[role="gridcell"]:nth-of-type(2)');
     }
     get cTText () {

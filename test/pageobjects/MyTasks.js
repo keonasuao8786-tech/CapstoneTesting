@@ -14,9 +14,6 @@ class MyTasks extends Page {
     get addTaskWindow () {
         return $(`[class="fui-DialogSurface r1u3t6p6 ___4tvrrt0 fw76w1l fc5govd f19ebcec"]`);
     }
-    get detailsTab () {
-        return $(`[value="Details"]`);
-    }
     get discTab () {
         return $(`[value="Discussion"]`);
     }
@@ -103,9 +100,6 @@ class MyTasks extends Page {
     }
     get closeBtnB () {
         return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Close"]`);
-    }
-    get completeBtnA () {
-        return $(`[class*="___1k9q2mx"]:nth-of-type(1) [aria-label="Complete"]`);
     }
     get completeBtnB () {
         return $(`[class*="___1k9q2mx"]:nth-of-type(2) [aria-label="Complete"]`);

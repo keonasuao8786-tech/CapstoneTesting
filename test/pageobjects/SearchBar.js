@@ -12,9 +12,6 @@ class SearchBar extends Page {
     get infoIcon () {
         return $(`[class*="fui-InfoButton"]>[class*="fui-Icon fui-Icon-regular"]`);
     }
-    get iconText () {
-        return $(`[class*="fui-PopoverSurface"]>[class*="___zwjznv0"]`);
-    }
     async case1NameSearch () {
         const name = await MyCases.case1.getText();
         await this.searchInput.setValue(name);
