@@ -11,6 +11,15 @@ class QuickInsights extends Page {
     get bTimeMeter () {
         return $('[role="meter"]');
     }
+    get timeInput () {
+        return $('[data-testid="add-timeentry-fortask-hours-input"]');
+    }
+    get timeSubmit () {
+        return $('[data-testid="add-timeentry-fortask-submit-button"]');
+    }
+    async addingTime () {
+        await this.timeInput.setValue('5');
+    }
 }
 
 export default new QuickInsights();

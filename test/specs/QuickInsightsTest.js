@@ -4,6 +4,7 @@ import SecurePage from '../pageobjects/Dashboard.js'
 import MyCases from '../pageobjects/MyCases.js'
 import SearchBar from '../pageobjects/SearchBar.js'
 import MyTasks from '../pageobjects/MyTasks.js'
+import QuickInsights from '../pageobjects/QuickInsights.js'
 
 describe('Quick Insights Table Testing', () => {
     it('should make a Billable and Non-Billable task within the My Tasks table', async () => {
@@ -107,5 +108,37 @@ describe('Quick Insights Table Testing', () => {
         await MyTasks.popUpNotif.waitForExist({ timeout: 30000 });
         await MyTasks.popUpNotif.click();
         await MyTasks.popUpNotif.waitForExist({ timeout: 1000 }).catch(() => false);
+    })
+    it('should test the Quick Insights table and how it connects to the Billable features of the My Tasks table', async () => {
+        await expect(QuickInsights.bTimeMeter).not.toHaveAttr('aria-valuenow', '100')
+
+        await MyTasks.taskOne.waitForDisplayed();
+        await MyTasks.taskTwo.waitForDisplayed();
+        await expect(MyTasks.taskOne).toBeDisplayed();
+        await expect(MyTasks.taskTwo).toBeDisplayed();
+
+        await MyTasks.taskOne.moveTo();
+        await expect(MyTasks.addTimeA).toBeDisplayed();
+        await MyTasks.addTimeA.click();
+        await MyTasks.addTimeWindow.waitForDisplayed();
+
+        await expect(QuickInsights.timeInput).toBeDisplayed();
+        await QuickInsights.addingTime();
+        await expect(QuickInsights.timeSubmit).toBeClickable();
+
+        await QuickInsights.timeSubmit.click();
+        await MyTasks.addTimeWindow.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.addTimeWindow).not.toBeDisplayed();
+
+        await expect(QuickInsights.timeSpan).toBeDisplayed();
+        await QuickInsights.timeSpan.click();
+        await MyTasks.listMenu.waitForDisplayed();
+        await expect(MyTasks.listMenu).toBeDisplayed();
+
+        await expect(MyTasks.optionTwo).toHaveAttr('aria-selected', 'true');
+        await MyTasks.optionOne.click();
+        await MyTasks.listMenu.waitForDisplayed({ timeout: 1000 }).catch(() => false);
+        await expect(MyTasks.listMenu).not.toBeDisplayed();
+        await expect(QuickInsights.bTimeMeter).toHaveAttr('aria-valuenow', '100');
     })
 })
