@@ -1,6 +1,5 @@
 import { browser, expect } from '@wdio/globals'
 import CaseLogin from '../pageobjects/login.js'
-import SecurePage from '../pageobjects/Dashboard.js'
 import MyCases from '../pageobjects/MyCases.js'
 import SearchBar from '../pageobjects/SearchBar.js'
 import MyTasks from '../pageobjects/MyTasks.js'
@@ -24,6 +23,7 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.caseDropdown.click(); // Chooses a case
         await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.optionOne.waitForClickable();
 
         await MyTasks.optionOne.waitForDisplayed(true);
         await MyTasks.optionOne.click();
@@ -34,6 +34,7 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.milestoneMenu.click(); // Chooses a milestone if the case has one
         await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.optionOne.waitForClickable();
         await MyTasks.optionOne.waitForDisplayed();
         if (await MyTasks.optionOne.waitForExist({timeout: 1000})) {
             await MyTasks.optionOne.click();
@@ -82,6 +83,7 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.caseDropdown.click();
         await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.optionOne.waitForClickable();
 
         await MyTasks.optionOne.waitForDisplayed(true);
         await MyTasks.optionOne.moveTo();
@@ -91,6 +93,7 @@ describe('My Tasks Table Testing', () => {
         await MyTasks.milestoneMenu.click();
         await MyTasks.listMenu.waitForDisplayed();
         await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.optionOne.waitForClickable();
         await MyTasks.optionOne.waitForDisplayed();
         if (await MyTasks.optionOne.waitForExist({timeout: 1000})) {
             await MyTasks.optionOne.click();
@@ -178,12 +181,14 @@ describe('My Tasks Table Testing', () => {
 
         await MyTasks.filterCase.click(); // Filters the cases by Case Name
         await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.optionOne.waitForClickable();
         await expect(MyTasks.optionOne).toHaveAttr(`aria-selected`, `true`); // Expects the first item in the list menu to be selected
 
         await MyTasks.optionTwo.click(); // Selects the second option and confirms the second item onward is selected when you click it
         await expect(MyTasks.listMenu).not.toBeDisplayed();
         await MyTasks.filterCase.click();
         await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.optionOne.waitForClickable();
         await expect(MyTasks.optionTwo).toHaveAttr(`aria-selected`, `true`);
 
         await expect(MyTasks.optionThree).toExist();
@@ -193,6 +198,7 @@ describe('My Tasks Table Testing', () => {
 
         await MyTasks.filterCase.click();
         await expect(MyTasks.listMenu).toBeDisplayed();
+        await MyTasks.optionOne.waitForClickable();
         await expect(MyTasks.optionOne).toBeDisplayed();
         await MyTasks.optionOne.click();
 
